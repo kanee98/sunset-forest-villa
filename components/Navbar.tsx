@@ -16,35 +16,26 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (scrolled) setMobileMenuOpen(false);
-  }, [scrolled]);
-
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
   }, [mobileMenuOpen]);
 
   return (
     <>
-      {/* Big centered header before scroll */}
+      {/* Top Large Title (Desktop Only, Not Scrolled) */}
       <AnimatePresence>
         {!scrolled && (
           <motion.div
             initial={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
-            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 select-none pointer-events-none flex flex-col items-center space-y-6 px-4 max-w-[90vw]"
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-40 select-none pointer-events-none hidden md:flex flex-col items-center space-y-6 px-4 max-w-[90vw]"
           >
             <h1 className="text-white text-5xl sm:text-6xl md:text-7xl font-serif font-bold tracking-wider drop-shadow-lg text-center leading-tight">
               Sunset Forest Villa
             </h1>
 
-            {/* Hide nav links and Book button in big header on mobile (only hamburger visible) */}
             <nav>
-              <ul className="hidden md:flex space-x-12 text-yellow-400 font-medium text-xl cursor-default">
+              <ul className="flex space-x-12 text-yellow-400 font-medium text-xl cursor-default">
                 <li>
                   <Link
                     href="#rooms"
@@ -75,24 +66,30 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Sticky navbar after scroll */}
+      {/* Sticky Navbar (Always on mobile, only on scroll for desktop) */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
-        animate={scrolled ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
+        animate={(scrolled || typeof window !== "undefined" && window.innerWidth < 768) ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md shadow-md"
+        className={`fixed top-0 left-0 w-full z-50 transition-all ${
+          scrolled ? "bg-black/70 backdrop-blur-md shadow-md" : "bg-transparent"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Shrunk logo */}
+          {/* Logo */}
           <Link
             href="/"
-            className="text-yellow-400 text-xl sm:text-2xl font-serif font-bold tracking-wide"
+            className="text-yellow-400 text-xl sm:text-2xl font-serif font-bold tracking-wide z-[60]"
           >
             Sunset Forest Villa
           </Link>
 
-          {/* Desktop nav links */}
-          <div className="hidden md:flex items-center space-x-8 text-yellow-400 font-medium">
+          {/* Desktop Nav (only visible when scrolled) */}
+          <div
+            className={`hidden md:flex items-center space-x-8 text-yellow-400 font-medium transition-opacity duration-300 ${
+              scrolled ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
             <Link href="#rooms" className="hover:text-yellow-300">
               Rooms
             </Link>
@@ -102,7 +99,6 @@ export default function Navbar() {
             <Link href="#contact" className="hover:text-yellow-300">
               Contact
             </Link>
-            {/* Book Now button */}
             <Link
               href="#book"
               className="ml-6 px-5 py-2 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 transition"
@@ -111,71 +107,46 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile hamburger button - ALWAYS visible */}
+          {/* Mobile Hamburger */}
           <button
-            className="md:hidden text-yellow-400 focus:outline-none"
+            className="md:hidden text-yellow-400 focus:outline-none z-[60]"
             aria-label="Toggle menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
+        </div>
+      </motion.nav>
 
-          {/* On mobile, show Book Now button in navbar (right side), ONLY after scroll */}
-          {scrolled && (
+      {/* Mobile Drawer Fullscreen Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 left-0 w-full h-screen md:hidden bg-black/90 backdrop-blur-md z-40 flex flex-col items-center justify-center px-6 space-y-6 text-yellow-400 text-xl font-medium"
+          >
+            <Link href="#rooms" onClick={() => setMobileMenuOpen(false)} className="hover:text-yellow-300">
+              Rooms
+            </Link>
+            <Link href="#book" onClick={() => setMobileMenuOpen(false)} className="hover:text-yellow-300">
+              Book
+            </Link>
+            <Link href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-yellow-300">
+              Contact
+            </Link>
             <Link
               href="#book"
-              className="md:hidden ml-4 px-4 py-2 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 transition"
               onClick={() => setMobileMenuOpen(false)}
+              className="mt-4 px-6 py-2 bg-yellow-400 text-black font-semibold rounded-full hover:bg-yellow-300 transition"
             >
               Book Now
             </Link>
-          )}
-        </div>
-
-        {/* Mobile menu drawer */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden bg-black/90 backdrop-blur-md overflow-hidden"
-            >
-              <nav className="flex flex-col px-6 py-4 space-y-4 text-yellow-400 font-medium">
-                <Link
-                  href="#rooms"
-                  className="hover:text-yellow-300"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Rooms
-                </Link>
-                <Link
-                  href="#book"
-                  className="hover:text-yellow-300"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Book
-                </Link>
-                <Link
-                  href="#contact"
-                  className="hover:text-yellow-300"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Contact
-                </Link>
-                <Link
-                  href="#book"
-                  className="mt-4 px-5 py-2 bg-yellow-400 text-black font-semibold rounded-full text-center hover:bg-yellow-300 transition"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Book Now
-                </Link>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
