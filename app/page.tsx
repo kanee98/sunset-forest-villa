@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
+      <main>
         <Hero />
         <RoomShowcase />
         <BookingCTA />
