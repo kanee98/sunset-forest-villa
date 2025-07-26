@@ -29,10 +29,10 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="fixed top-6 left-1/2 -translate-x-1/2 z-40 select-none pointer-events-none hidden xl:flex flex-col items-center space-y-4 px-6 text-center max-w-screen-xl"
           >
-            <h1 className={`${dancingScript.className} text-7xl sm:text-8xl md:text-9xl font-semibold tracking-wide drop-shadow-xl text-sky-200`}>
+            <h1 className={`${dancingScript.className} text-7xl sm:text-8xl md:text-9xl font-semibold tracking-wide drop-shadow-xl text-[#B8860B]`}>
               Sun Set
             </h1>
-            <h2 className="text-sky-200 text-2xl sm:text-3xl md:text-4xl font-sans uppercase font-bold tracking-widest drop-shadow-md leading-tight mt-[-0.75rem]">
+            <h2 className="text-[#B8860B] text-2xl sm:text-3xl md:text-4xl font-sans uppercase tracking-widest drop-shadow-md leading-tight mt-[-0.75rem]">
               Forest Villa
             </h2>
             <p className="text-[#f1f5f9] font-medium italic text-lg max-w-md">
@@ -40,7 +40,7 @@ export default function Navbar() {
             </p>
             <KandyanDivider />
             <nav>
-              <ul className="flex space-x-8 text-sky-300 font-medium text-xl cursor-default">
+              <ul className="flex space-x-8 text-[#f1f5f9] font-medium text-xl cursor-default">
                 <li><Link href="#rooms" className="hover:text-white pointer-events-auto transition-colors">Rooms</Link></li>
                 <li><Link href="#book" className="hover:text-white pointer-events-auto transition-colors">Book</Link></li>
                 <li><Link href="#contact" className="hover:text-white pointer-events-auto transition-colors">Contact</Link></li>
