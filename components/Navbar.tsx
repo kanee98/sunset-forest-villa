@@ -1,32 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import KandyanDivider from "./KandyanDivider";
+import useNavbarState from "@/hooks/useNavbarState";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const { scrolled, isCompactView } = useNavbarState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isCompactView, setIsCompactView] = useState(false); // lg and down = compact
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsCompactView(window.innerWidth <= 1280); // Nest Hub Max and below
-    };
-
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-
-    handleResize(); // run once on mount
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
@@ -41,13 +24,7 @@ export default function Navbar() {
             initial={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
-            className="
-              fixed top-6 left-1/2 -translate-x-1/2
-              z-40 select-none pointer-events-none
-              hidden xl:flex flex-col items-center
-              space-y-4 px-6 text-center
-              max-w-[90vw] max-w-screen-xl
-            "
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-40 select-none pointer-events-none hidden xl:flex flex-col items-center space-y-4 px-6 text-center max-w-[90vw] max-w-screen-xl"
           >
             <h1 className="text-yellow-100 text-5xl sm:text-6xl md:text-7xl font-serif font-bold tracking-wider drop-shadow-xl leading-tight bg-gradient-to-r from-red-900 via-yellow-500 to-red-900 text-transparent bg-clip-text">
               Sunset Forest Villa
@@ -67,7 +44,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Sticky Navbar — always visible on small/medium screens */}
+      {/* Sticky Navbar — always visible on compact screens or when scrolled */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={(scrolled || isCompactView) ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
@@ -77,12 +54,10 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="text-yellow-300 text-xl sm:text-2xl font-serif font-bold tracking-wide z-[60]">
             Sunset Forest Villa
           </Link>
 
-          {/* Desktop Nav (visible only if scrolled or compact view) */}
           <div
             className={`hidden md:flex items-center space-x-8 text-yellow-200 font-medium transition-opacity duration-300 ${
               scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -99,7 +74,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
           <button
             className="md:hidden text-yellow-300 focus:outline-none z-[60]"
             aria-label="Toggle menu"
@@ -110,7 +84,6 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
