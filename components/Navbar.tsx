@@ -29,10 +29,10 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="fixed top-6 left-1/2 -translate-x-1/2 z-40 select-none pointer-events-none hidden xl:flex flex-col items-center space-y-4 px-6 text-center max-w-screen-xl"
           >
-            <h1 className={`${dancingScript.className} text-6xl font-semibold tracking-wide drop-shadow-xl`}>
+            <h1 className={`${dancingScript.className} text-7xl sm:text-8xl md:text-9xl font-semibold tracking-wide drop-shadow-xl text-sky-200`}>
               Sun Set
             </h1>
-            <h2 className="text-sky-200 text-3xl sm:text-4xl md:text-5xl font-sans uppercase font-bold tracking-widest drop-shadow-md leading-tight mt-[-0.5rem]">
+            <h2 className="text-sky-200 text-2xl sm:text-3xl md:text-4xl font-sans uppercase font-bold tracking-widest drop-shadow-md leading-tight mt-[-0.75rem]">
               Forest Villa
             </h2>
             <p className="text-[#f1f5f9] font-medium italic text-lg max-w-md">
@@ -61,7 +61,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="text-sky-200 text-xl sm:text-2xl font-serif font-bold tracking-wide z-[60]">
-            Sunset Forest Villa
+            Sun Set Forest Villa
           </Link>
 
           <div
