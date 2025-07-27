@@ -4,26 +4,48 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/f
 
 export default function Hero() {
   return (
-    <section
-      className="relative w-full h-screen flex items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-36 bg-cover bg-center text-white"
-      style={{ backgroundImage: "url('/bg.jpg')" }}
-    >
+    <section className="relative w-full h-screen flex items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-36 text-white overflow-hidden">
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
+      {/* Background image with slow zoom */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: "url('/bg.jpg')", 
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.05 }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "mirror",
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Gradient overlay for luxury feel */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background: "linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.4))",
+          mixBlendMode: "normal",
+        }}
+      />
 
       {/* Text Content */}
       <motion.div
-        className="z-10 max-w-xl text-center md:text-left"
-        initial={{ x: -50, opacity: 0 }}
+        className="z-20 max-w-xl text-center md:text-left"
+        initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-xl">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
           Escape. Relax. Rejuvenate.
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-white/90">
-          Discover the perfect blend of nature and luxury at Sunset Forest Villa.
+          Discover timeless comfort and elegant luxury at Sunset Forest Villa.
         </p>
         <a
           href="#book"
@@ -33,10 +55,10 @@ export default function Hero() {
         </a>
       </motion.div>
 
-      {/* Social Media Icons (hidden on small, shown on md+) */}
+      {/* Social Media Icons */}
       <motion.div
-        className="hidden md:flex flex-col gap-6 z-10"
-        initial={{ x: 50, opacity: 0 }}
+        className="hidden md:flex flex-col gap-6 z-20"
+        initial={{ x: 30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
       >
