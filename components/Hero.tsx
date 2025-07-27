@@ -35,7 +35,7 @@ export default function Hero() {
 
         <motion.a
           href="#book"
-          className="inline-block mt-6 px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-accent hover:text-white transition"
+          className="inline-block mt-6 px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-accent transition"
           whileHover={{ scale: 1.05 }}
         >
           Book Now
