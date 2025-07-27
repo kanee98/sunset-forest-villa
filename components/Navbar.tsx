@@ -88,14 +88,23 @@ export default function Navbar() {
           scrolled ? "bg-dark-800/80 backdrop-blur-md shadow-md" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-sky-200 text-xl sm:text-2xl font-serif font-bold tracking-wide z-[60]">
-            Sun Set Forest Villa
+       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Title */}
+          <Link href="/" className="flex items-center space-x-2 z-[60]">
+            <span className={`${dancingScript.className} text-xl sm:text-2xl font-serif font-bold tracking-wide drop-shadow-xl text-[#B8860B]`}>
+              Sun Set
+            </span>
+            <span className="text-[#B8860B] text-xl sm:text-2xl font-sans uppercase tracking-widest drop-shadow-md leading-tight">
+              Forest Villa
+            </span>
           </Link>
 
-          <div className={`hidden md:flex items-center space-x-8 font-medium transition-opacity duration-300 ${
-            scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}>
+          {/* Desktop Nav */}
+          <div
+            className={`hidden md:flex items-center space-x-8 font-medium transition-opacity duration-300 ${
+              scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
             <Link href="/" className={`transition ${isActive("")}`}>Home</Link>
             <Link href="#about" className={`transition ${isActive("about")}`}>About Us</Link>
             <Link href="#accommodation" className={`transition ${isActive("accommodation")}`}>Accommodation</Link>
@@ -108,6 +117,7 @@ export default function Navbar() {
             </Link>
           </div>
 
+          {/* Hamburger Button */}
           <button
             className="md:hidden text-sky-300 focus:outline-none z-[60]"
             aria-label="Toggle menu"
