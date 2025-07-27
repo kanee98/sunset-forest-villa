@@ -42,12 +42,14 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="fixed top-6 left-1/2 -translate-x-1/2 z-40 select-none hidden xl:flex flex-col items-center space-y-4 px-6 text-center max-w-screen-xl"
           >
-            <h1 className={`${dancingScript.className} text-7xl sm:text-8xl md:text-9xl font-semibold tracking-wide drop-shadow-xl text-[#B8860B]`}>
-              Sun Set
-            </h1>
-            <h2 className="text-[#B8860B] text-2xl sm:text-3xl md:text-4xl font-sans uppercase tracking-widest drop-shadow-md leading-tight mt-[-0.75rem]">
-              Forest Villa
-            </h2>
+            <div className="flex flex-wrap items-end gap-x-2 gap-y-1 text-center md:text-left justify-center md:justify-start">
+              <h1 className={`${dancingScript.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-wide drop-shadow-xl text-[#B8860B] px-4`}>
+                Sun Set
+              </h1>
+              <h2 className="text-[#B8860B] text-2xl sm:text-3xl md:text-4xl font-sans uppercase tracking-widest drop-shadow-md leading-tight">
+                Forest Villa
+              </h2>
+            </div>
             <p className="text-[#f1f5f9] font-medium italic text-lg max-w-md">
               Where <span className="font-semibold text-[#B8860B]">Golden evenings</span> meet the soul of Kandy
             </p>
@@ -123,7 +125,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div
-            className={`hidden md:flex items-center space-x-8 font-medium transition-opacity duration-300 ${
+            className={`hidden lg:flex items-center space-x-8 font-medium transition-opacity duration-300 ${
               scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
@@ -164,7 +166,7 @@ export default function Navbar() {
 
           {/* Hamburger Button */}
           <button
-            className="md:hidden text-[#D4AF37] focus:outline-none z-[60]"
+            className="lg:hidden text-[#D4AF37] focus:outline-none z-[60]"
             aria-label="Toggle menu"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
