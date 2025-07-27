@@ -7,12 +7,24 @@ import { Menu, X } from "lucide-react";
 import KandyanDivider from "./KandyanDivider";
 import useNavbarState from "@/hooks/useNavbarState";
 import { Dancing_Script } from "next/font/google";
+import useActiveSection from "@/hooks/useActiveSection";
 
 const dancingScript = Dancing_Script({ weight: "600", subsets: ["latin"] });
 
 export default function Navbar() {
   const { scrolled, isCompactView } = useNavbarState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const activeSection = useActiveSection([
+    "about",
+    "accommodation",
+    "contact",
+  ]);
+
+  const isActive = (id: string) =>
+    activeSection === id
+      ? "text-white font-bold"
+      : "text-[#c1c2c2ff] hover:text-white";
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
@@ -41,9 +53,26 @@ export default function Navbar() {
             <KandyanDivider />
             <nav>
               <ul className="flex space-x-8 text-[#f1f5f9] font-medium text-xl cursor-default">
-                <li><Link href="#rooms" className="hover:text-white pointer-events-auto transition-colors">Rooms</Link></li>
-                <li><Link href="#book" className="hover:text-white pointer-events-auto transition-colors">Book</Link></li>
-                <li><Link href="#contact" className="hover:text-white pointer-events-auto transition-colors">Contact</Link></li>
+                <li>
+                  <Link href="/" className={`hover:text-white pointer-events-auto transition-colors ${isActive("")}`}>
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#about" className={`hover:text-white pointer-events-auto transition-colors ${isActive("about")}`}>
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#accommodation" className={`hover:text-white pointer-events-auto transition-colors ${isActive("accommodation")}`}>
+                    Accommodation
+                  </Link>
+                </li>
+                <li>
+                  <Link href="#contact" className={`hover:text-white pointer-events-auto transition-colors ${isActive("contact")}`}>
+                    Contact Us
+                  </Link>
+                </li>
               </ul>
             </nav>
           </motion.div>
@@ -64,14 +93,13 @@ export default function Navbar() {
             Sun Set Forest Villa
           </Link>
 
-          <div
-            className={`hidden md:flex items-center space-x-8 text-sky-300 font-medium transition-opacity duration-300 ${
-              scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          >
-            <Link href="#rooms" className="hover:text-white transition">Rooms</Link>
-            <Link href="#book" className="hover:text-white transition">Book</Link>
-            <Link href="#contact" className="hover:text-white transition">Contact</Link>
+          <div className={`hidden md:flex items-center space-x-8 font-medium transition-opacity duration-300 ${
+            scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}>
+            <Link href="/" className={`transition ${isActive("")}`}>Home</Link>
+            <Link href="#about" className={`transition ${isActive("about")}`}>About Us</Link>
+            <Link href="#accommodation" className={`transition ${isActive("accommodation")}`}>Accommodation</Link>
+            <Link href="#contact" className={`transition ${isActive("contact")}`}>Contact Us</Link>
             <Link
               href="#book"
               className="ml-6 px-5 py-2 bg-sky-400 text-black font-semibold rounded-full hover:bg-sky-300 transition"
@@ -94,15 +122,12 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 w-full h-screen md:hidden bg-gradient-to-br from-dark-900 via-slate-800 to-dark-900 backdrop-blur-md z-40 flex flex-col items-center justify-center px-6 space-y-6 text-sky-200 text-xl font-medium"
+            className="fixed top-0 left-0 w-full h-screen md:hidden bg-gradient-to-br from-dark-900 via-slate-800 to-dark-900 backdrop-blur-md z-40 flex flex-col items-center justify-center px-6 space-y-6 text-xl font-medium"
           >
-            <Link href="#rooms" onClick={() => setMobileMenuOpen(false)} className="hover:text-white">Rooms</Link>
-            <Link href="#book" onClick={() => setMobileMenuOpen(false)} className="hover:text-white">Book</Link>
-            <Link href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-white">Contact</Link>
+            <Link href="/" onClick={() => setMobileMenuOpen(false)} className={`transition ${isActive("")}`}>Home</Link>
+            <Link href="#about" onClick={() => setMobileMenuOpen(false)} className={`transition ${isActive("about")}`}>About Us</Link>
+            <Link href="#accommodation" onClick={() => setMobileMenuOpen(false)} className={`transition ${isActive("accommodation")}`}>Accommodation</Link>
+            <Link href="#contact" onClick={() => setMobileMenuOpen(false)} className={`transition ${isActive("contact")}`}>Contact</Link>
             <Link
               href="#book"
               onClick={() => setMobileMenuOpen(false)}
