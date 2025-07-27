@@ -29,14 +29,17 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          background: "linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.4))",
+          background: `
+            linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.4) 100%),
+            linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0))
+          `,
           mixBlendMode: "normal",
         }}
       />
 
       {/* Text Content */}
       <motion.div
-        className="z-20 max-w-xl text-center md:text-left"
+        className="z-20 max-w-xl text-left md:text-left"
         initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
@@ -45,7 +48,7 @@ export default function Hero() {
           Escape. Relax. Rejuvenate.
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-white/90">
-          Discover timeless comfort and elegant luxury at Sunset Forest Villa.
+          Discover timeless comfort and elegant luxury at Sun Set Forest Villa.
         </p>
         <a
           href="#book"
