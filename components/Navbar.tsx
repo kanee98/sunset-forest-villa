@@ -115,7 +115,7 @@ export default function Navbar() {
        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Title */}
           <Link href="/" className="flex items-center space-x-2 z-[60]">
-            <span className={`${dancingScript.className} text-xl sm:text-2xl font-serif font-bold tracking-wide drop-shadow-xl text-[#B8860B]`}>
+            <span className={`${dancingScript.className} text-xl sm:text-3xl font-serif font-bold tracking-wide drop-shadow-xl text-[#B8860B]`}>
               Sun Set
             </span>
             <span className="text-[#B8860B] text-xl sm:text-2xl font-sans uppercase tracking-widest drop-shadow-md leading-tight">
