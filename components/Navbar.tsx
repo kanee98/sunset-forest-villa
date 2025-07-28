@@ -55,7 +55,7 @@ export default function Navbar() {
             </p>
             <KandyanDivider />
             <nav>
-              <ul className="flex space-x-8 text-[#f1f5f9] font-medium text-xl cursor-default">
+              <ul className="flex space-x-8 text-[#5C3A25] font-medium text-xl cursor-default">
                 <li>
                   <Link href="/" className={`hover:text-white pointer-events-auto transition-colors ${isActive("")}`}>
                     Home
@@ -74,7 +74,7 @@ export default function Navbar() {
                       <span>Accommodation</span>
                       <ChevronDown size={16} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
                     </button>
-                    <ul className="absolute top-full left-0 mt-2 w-56 bg-[#B8860B] border border-[#B8860B] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#C09728]">
+                    <ul className="absolute top-full left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
                       {[
                         { label: "Single Room", href: "#single-room" },
                         { label: "Double Room", href: "#double-room" },
