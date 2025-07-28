@@ -45,7 +45,7 @@ export default function Hero() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg font-serif">
           Escape. Relax. Rejuvenate.
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-white/90">

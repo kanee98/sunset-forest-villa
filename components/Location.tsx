@@ -25,16 +25,16 @@ export default function Location() {
       </div>
 
       {/* Decorative Temple of Tooth Relic image */}
-            <div className="absolute inset-0 flex justify-center items-center opacity-10 z-0">
-              <Image
-                  src="/temple.png"
-                  alt="Temple"
-                  fill
-                  quality={100}
-                  className="object-cover pointer-events-none"
-                  priority
-              />
-            </div>
+      <div className="absolute inset-0 flex justify-center items-center opacity-10 z-0">
+        <Image
+            src="/temple.png"
+            alt="Temple"
+            fill
+            quality={100}
+            className="object-cover pointer-events-none"
+            priority
+        />
+      </div>
 
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-6 max-w-6xl text-center">
@@ -44,7 +44,7 @@ export default function Location() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-wide drop-shadow-2xl mb-4 bg-gradient-to-r from-[#F7E9D7] via-[#E8C89C] to-yellow-100 bg-clip-text text-transparent py-10">
+          <h2 className="text-4xl md:text-5xl font-serif font-extrabold tracking-wide drop-shadow-2xl mb-4 bg-gradient-to-r from-[#F7E9D7] via-[#E8C89C] to-yellow-100 bg-clip-text text-transparent py-10">
             Visit Us in the Heart of Heritage
           </h2>
           <p className="text-gray-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto">

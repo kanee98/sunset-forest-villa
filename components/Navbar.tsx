@@ -112,7 +112,7 @@ export default function Navbar() {
           scrolled ? "bg-[#4B2E1D] backdrop-blur-md shadow-md" : "bg-[#4B2E1D]"
         }`}
       >
-       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Title */}
           <Link href="/" className="flex items-center space-x-2 z-[60]">
             <span className={`${dancingScript.className} text-xl sm:text-3xl font-serif font-bold tracking-wide drop-shadow-xl text-[#B8860B]`}>
