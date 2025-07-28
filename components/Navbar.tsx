@@ -25,7 +25,7 @@ export default function Navbar() {
   const isActive = (id: string) =>
     activeSection === id
       ? "text-[#D4AF37] font-bold"
-      : "text-[#c1c2c2ff] hover:text-white";
+      : "text-[#fff] hover:text-white";
 
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
@@ -109,7 +109,7 @@ export default function Navbar() {
         animate={(scrolled || isCompactView) ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-0 left-0 w-full z-50 transition-all ${
-          scrolled ? "bg-dark-800/80 backdrop-blur-md shadow-md" : "bg-transparent"
+          scrolled ? "bg-[#4B2E1D] backdrop-blur-md shadow-md" : "bg-[#4B2E1D]"
         }`}
       >
        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
