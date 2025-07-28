@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronUp, ChevronDown  } from "lucide-react";
@@ -12,6 +13,7 @@ import useActiveSection from "@/hooks/useActiveSection";
 const dancingScript = Dancing_Script({ weight: "600", subsets: ["latin"] });
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { scrolled, isCompactView } = useNavbarState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [accommodationOpen, setAccommodationOpen] = useState(false);
@@ -22,8 +24,8 @@ export default function Navbar() {
     "contact",
   ]);
 
-  const isActive = (id: string) =>
-    activeSection === id
+  const isActive = (path: string) =>
+    pathname === path
       ? "text-[#D4AF37] font-bold"
       : "text-[#fff] hover:text-white";
 
@@ -57,28 +59,28 @@ export default function Navbar() {
             <nav>
               <ul className="flex space-x-8 text-[#5C3A25] font-medium text-xl cursor-default">
                 <li>
-                  <Link href="/" className={`hover:text-white pointer-events-auto transition-colors ${isActive("")}`}>
+                  <Link href="/" className={`hover:text-white pointer-events-auto transition-colors ${isActive("/")}`}>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="#about" className={`hover:text-white pointer-events-auto transition-colors ${isActive("about")}`}>
+                  <Link href="/about" className={`hover:text-white pointer-events-auto transition-colors ${isActive("/about")}`}>
                     About Us
                   </Link>
                 </li>
                 <li>
                   <div className="relative group">
                     <button
-                      className={`flex items-center space-x-1 transition ${isActive("accommodation")} focus:outline-none`}
+                      className={`flex items-center space-x-1 transition ${isActive("/accommodation")} focus:outline-none`}
                     >
                       <span>Accommodation</span>
                       <ChevronDown size={16} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
                     </button>
                     <ul className="absolute top-full left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
                       {[
-                        { label: "Single Room", href: "#single-room" },
-                        { label: "Double Room", href: "#double-room" },
-                        { label: "Family Suite", href: "#family-suite" },
+                        { label: "Single Room", href: "/single-room" },
+                        { label: "Double Room", href: "/double-room" },
+                        { label: "Family Suite", href: "/family-suite" },
                       ].map((item) => (
                         <li key={item.href}>
                           <Link
@@ -93,7 +95,7 @@ export default function Navbar() {
                   </div>
                 </li>
                 <li>
-                  <Link href="#contact" className={`hover:text-white pointer-events-auto transition-colors ${isActive("contact")}`}>
+                  <Link href="/contact" className={`hover:text-white pointer-events-auto transition-colors ${isActive("/contact")}`}>
                     Contact Us
                   </Link>
                 </li>
@@ -129,20 +131,20 @@ export default function Navbar() {
               scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
-            <Link href="/" className={`transition ${isActive("")}`}>Home</Link>
-            <Link href="#about" className={`transition ${isActive("about")}`}>About Us</Link>
+            <Link href="/" className={`transition ${isActive("/")}`}>Home</Link>
+            <Link href="/about" className={`transition ${isActive("/about")}`}>About Us</Link>
             <div className="relative group">
               <button
-                className={`flex items-center space-x-1 transition ${isActive("accommodation")} focus:outline-none`}
+                className={`flex items-center space-x-1 transition ${isActive("/accommodation")} focus:outline-none`}
               >
                 <span>Accommodation</span>
                 <ChevronDown size={16} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
               </button>
               <ul className="absolute top-full left-0 mt-2 w-56 bg-[#B8860B] border border-[#B8860B] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#C09728]">
                 {[
-                  { label: "Single Room", href: "#single-room" },
-                  { label: "Double Room", href: "#double-room" },
-                  { label: "Family Suite", href: "#family-suite" },
+                  { label: "Single Room", href: "/single-room" },
+                  { label: "Double Room", href: "/double-room" },
+                  { label: "Family Suite", href: "/family-suite" },
                 ].map((item) => (
                   <li key={item.href}>
                     <Link
@@ -155,7 +157,7 @@ export default function Navbar() {
                 ))}
               </ul>
             </div>
-            <Link href="#contact" className={`transition ${isActive("contact")}`}>Contact Us</Link>
+            <Link href="/contact" className={`transition ${isActive("/contact")}`}>Contact Us</Link>
             <Link
               href="#book"
               className="ml-6 px-5 py-2 bg-[#D4AF37] text-black font-semibold rounded-full hover:bg-[#f8d564ff] transition"
@@ -212,12 +214,12 @@ export default function Navbar() {
               {/* Menu Items */}
               <ul className="flex flex-col space-y-5 text-lg font-medium">
                 <li>
-                  <Link href="/" onClick={() => setMobileMenuOpen(false)} className={`block transition ${isActive("")}`}>
+                  <Link href="/" onClick={() => setMobileMenuOpen(false)} className={`block transition ${isActive("/")}`}>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="#about" onClick={() => setMobileMenuOpen(false)} className={`block transition ${isActive("about")}`}>
+                  <Link href="/about" onClick={() => setMobileMenuOpen(false)} className={`block transition ${isActive("/about")}`}>
                     About Us
                   </Link>
                 </li>
@@ -226,7 +228,7 @@ export default function Navbar() {
                 <li>
                   <button
                     onClick={() => setAccommodationOpen(!accommodationOpen)}
-                    className={`flex items-center justify-between w-full text-left transition ${isActive("accommodation")} focus:outline-none`}
+                    className={`flex items-center justify-between w-full text-left transition ${isActive("/accommodation")} focus:outline-none`}
                     aria-expanded={accommodationOpen}
                     aria-controls="accommodation-submenu"
                   >
@@ -243,7 +245,7 @@ export default function Navbar() {
                     >
                       <li>
                         <Link
-                          href="#single-room"
+                          href="/single-room"
                           onClick={() => setMobileMenuOpen(false)}
                           className="block px-3 py-2 rounded hover:bg-[#2a2a2a] transition"
                           role="menuitem"
@@ -253,7 +255,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-                          href="#double-room"
+                          href="/double-room"
                           onClick={() => setMobileMenuOpen(false)}
                           className="block px-3 py-2 rounded hover:bg-[#2a2a2a] transition"
                           role="menuitem"
@@ -263,7 +265,7 @@ export default function Navbar() {
                       </li>
                       <li>
                         <Link
-                          href="#family-suite"
+                          href="/family-suite"
                           onClick={() => setMobileMenuOpen(false)}
                           className="block px-3 py-2 rounded hover:bg-[#2a2a2a] transition"
                           role="menuitem"
@@ -276,7 +278,7 @@ export default function Navbar() {
                 </li>
 
                 <li>
-                  <Link href="#contact" onClick={() => setMobileMenuOpen(false)} className={`block transition ${isActive("contact")}`}>
+                  <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className={`block transition ${isActive("/contact")}`}>
                     Contact
                   </Link>
                 </li>
