@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="relative bottom-0 left-0 w-full bg-[#4B2E1D] text-white text-center text-sm py-4 px-4 z-50">
+    <footer className="relative bottom-0 left-0 w-full bg-[#4B2E1D] text-white text-center text-sm py-4 px-4 z-30">
       <div className="max-w-screen-xl mx-auto">
         <p className="text-white/80">
           © {new Date().getFullYear()} Sun Set Forest Villa. All rights reserved. Designed and built by{" "}

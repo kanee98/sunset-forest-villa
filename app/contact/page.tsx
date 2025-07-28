@@ -76,8 +76,8 @@ export default function ContactPage() {
                 data-label_2="WEATHER"
                 data-theme="pure"
                 data-basecolor="#ffffff"
-                data-accent="#B8860B"
-                data-textcolor="#4B2E1D"
+                data-accent="#4B2E1D"
+                data-textcolor="#B8860B"
               >
                 KANDY WEATHER
               </a>
