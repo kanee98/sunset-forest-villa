@@ -9,8 +9,8 @@ export default function WelcomeSection() {
       {/* Decorative Kandyan Nilame image */}
       <div className="absolute inset-0 flex justify-center items-center opacity-10 z-0">
         <Image
-          src="/kandyan-nilame.png" // Add a subtle, transparent Kandyan-style figure
-          alt="Kandyan Nilame"
+          src="/kandyan-flower.jpg" 
+          alt="Kandyan Flower"
           layout="fill"
           objectFit="cover"
           quality={100}
@@ -27,6 +27,29 @@ export default function WelcomeSection() {
         <h1 className="text-5xl sm:text-6xl font-serif font-bold text-[#4B2E1D] drop-shadow-lg">
           Ayubowan!
         </h1>
+       {/* Kandyan Nilame illustrations (mirrored) */}
+        <div className="my-6 flex justify-center gap-8">
+            {/* Flipped image */}
+            <Image
+                src="/kandyan-nilame.png"
+                alt="Kandyan Nilame Right (Flipped)"
+                width={150}
+                height={150}
+                className="object-contain scale-x-[-1]"
+                quality={100}
+                priority
+            />
+             {/* Original image */}
+            <Image
+                src="/kandyan-nilame.png"
+                alt="Kandyan Nilame Left"
+                width={150}
+                height={150}
+                className="object-contain"
+                quality={100}
+                priority
+            />
+        </div>
         <p className="mt-4 text-xl sm:text-2xl text-[#5C3A25] max-w-2xl mx-auto font-light">
           Welcome to <span className="font-semibold">Sunset Forest Villa</span>, where tradition meets tranquility. Experience authentic Sri Lankan hospitality inspired by the grandeur of Kandyan heritage.
         </p>
