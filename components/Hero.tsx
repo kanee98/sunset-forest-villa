@@ -27,17 +27,16 @@ export default function Hero() {
       />
 
      {/* Gradient overlay for Kandyan luxury feel */}
-<div
-  className="absolute inset-0 z-10 pointer-events-none"
-  style={{
-    background: `
-      linear-gradient(to right, rgba(247, 233, 215, 0.8) 0%, rgba(232, 200, 156, 0.6) 30%, rgba(255, 255, 255, 0.2) 60%, rgba(232, 200, 156, 0.4) 85%, rgba(247, 233, 215, 0.6) 100%),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0))
-    `,
-    mixBlendMode: "multiply",
-  }}
-/>
-
+    <div
+      className="absolute inset-0 z-10 pointer-events-none"
+      style={{
+        background: `
+          linear-gradient(to right, rgba(247, 233, 215, 0.8) 0%, rgba(232, 200, 156, 0.6) 30%, rgba(255, 255, 255, 0.2) 60%, rgba(232, 200, 156, 0.4) 85%, rgba(247, 233, 215, 0.6) 100%),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0))
+        `,
+        mixBlendMode: "multiply",
+      }}
+    />
 
       {/* Text Content */}
       <motion.div

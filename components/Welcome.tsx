@@ -6,15 +6,15 @@ import Image from "next/image";
 export default function WelcomeSection() {
   return (
     <section className="relative bg-gradient-to-br from-[#F7E9D7] to-[#E8C89C] py-20 px-6 overflow-hidden max-w-full shadow-xl">
-      {/* Decorative Kandyan Nilame image */}
+      {/* Decorative Kandyan Flower image */}
       <div className="absolute inset-0 flex justify-center items-center opacity-10 z-0">
         <Image
-          src="/kandyan-flower.jpg" 
-          alt="Kandyan Flower"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-          className="pointer-events-none"
+            src="/kandyan-flower.jpg"
+            alt="Kandyan Flower"
+            fill
+            quality={100}
+            className="object-cover pointer-events-none"
+            priority
         />
       </div>
 
