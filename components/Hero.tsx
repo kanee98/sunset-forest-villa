@@ -1,42 +1,58 @@
 "use client";
-import { motion } from "framer-motion";
+
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
+const backgroundImages = ["/bg.jpg", "/bg2.jpg", "/bg3.jpg"];
+const transitionDuration = 1.2; 
+const slideInterval = 7000; 
+
 export default function Hero() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % backgroundImages.length);
+    }, slideInterval);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative w-full h-screen flex items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-36 text-white overflow-hidden">
 
-      {/* Background image with slow zoom */}
-      <motion.div
-        className="absolute inset-0 z-0"
+      {/* Background Slider */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={backgroundImages[currentImage]}
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${backgroundImages[currentImage]})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              filter: "brightness(0.75) saturate(0.8) blur(1px)",
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, scale: 1.05 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: transitionDuration }}
+          />
+        </AnimatePresence>
+      </div>
+
+      {/* Gradient Overlay */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
         style={{
-          backgroundImage: "url('/bg.jpg')", 
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          filter: "brightness(0.75) saturate(0.8) blur(1px)",
-        }}
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.05 }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "mirror",
-          ease: "easeInOut",
+          background: `
+            linear-gradient(to right, rgba(247, 233, 215, 0.8) 0%, rgba(232, 200, 156, 0.6) 30%, rgba(255, 255, 255, 0.2) 60%, rgba(232, 200, 156, 0.4) 85%, rgba(247, 233, 215, 0.6) 100%),
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0))
+          `,
+          mixBlendMode: "multiply",
         }}
       />
-
-     {/* Gradient overlay for Kandyan luxury feel */}
-    <div
-      className="absolute inset-0 z-10 pointer-events-none"
-      style={{
-        background: `
-          linear-gradient(to right, rgba(247, 233, 215, 0.8) 0%, rgba(232, 200, 156, 0.6) 30%, rgba(255, 255, 255, 0.2) 60%, rgba(232, 200, 156, 0.4) 85%, rgba(247, 233, 215, 0.6) 100%),
-          linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0))
-        `,
-        mixBlendMode: "multiply",
-      }}
-    />
 
       {/* Text Content */}
       <motion.div
