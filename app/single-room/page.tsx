@@ -26,7 +26,7 @@ export default function SingleRoom() {
         style={{ backgroundImage: `url(${selectedImage})` }}
       >
         <div className="absolute inset-0 bg-black/50" />
-        <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center">
+        <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-12">
           Single Room
         </h1>
       </section>
@@ -36,7 +36,7 @@ export default function SingleRoom() {
 
         {/* Image Gallery */}
         <section>
-          <h2 className="text-3xl font-bold text-[#4B2E1D] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
+          <h2 className="text-3xl font-bold text-[#F7E9D7] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
             Room Gallery
           </h2>
           <div className="flex gap-6 overflow-x-auto no-scrollbar py-2">
@@ -64,7 +64,7 @@ export default function SingleRoom() {
         </section>
 
         {/* 360° Panorama Viewer */}
-        <section>
+        {/* <section>
           <h2 className="text-3xl font-bold text-[#4B2E1D] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
             Explore in 360°
           </h2>
@@ -80,17 +80,17 @@ export default function SingleRoom() {
               height={450}
             />
           </div>
-        </section>
+        </section> */}
 
         {/* Room Details */}
-        <section className="max-w-4xl mx-auto text-[#4B2E1D] space-y-6">
+        <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">
           <h2 className="text-3xl font-bold border-b-4 border-[#B8860B] inline-block pb-2">
             Room Details
           </h2>
           <p className="text-lg leading-relaxed">
             Our cozy Single Room offers guests a perfect blend of comfort and traditional Kandyan aesthetics. Featuring a queen-sized bed, private balcony with stunning forest views, and modern amenities including air conditioning, Wi-Fi, and en-suite bathroom.
           </p>
-          <ul className="list-disc list-inside space-y-2 text-[#5C4433]">
+          <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
             <li>Queen-sized bed with premium linens</li>
             <li>Private balcony overlooking the gardens</li>
             <li>Complimentary high-speed Wi-Fi</li>
