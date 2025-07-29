@@ -1,14 +1,27 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import VideoPlayer from "@/components/VideoPlayer";
 
 export default function ExplorePage() {
+  const router = useRouter();
   const [started, setStarted] = useState(false);
   const [showChoices, setShowChoices] = useState(false);
+  const [selectedMainChoice, setSelectedMainChoice] = useState<"villa" | "house" | null>(null);
+  const [showFollowUpChoices, setShowFollowUpChoices] = useState(false);
   const [nextVideoSrc, setNextVideoSrc] = useState<string | null>(null);
 
   const introVideoRef = useRef<HTMLVideoElement>(null);
   const choiceVideoRef = useRef<HTMLVideoElement>(null);
+
+  const handleCloseModal = () => {
+    setStarted(false);
+    setShowChoices(false);
+    setShowFollowUpChoices(false);
+    setSelectedMainChoice(null);
+    setNextVideoSrc(null);
+  };
 
   const handleExploreClick = () => {
     setStarted(true);
@@ -21,97 +34,113 @@ export default function ExplorePage() {
     setShowChoices(true);
   };
 
-  const handleSelection = (choice: string) => {
+  const handleSelection = (choice: "villa" | "house") => {
+    setSelectedMainChoice(choice);
     setNextVideoSrc(`/videos/${choice}.mp4`);
     setShowChoices(false);
   };
 
-  useEffect(() => {
-    document.body.style.overflow = showChoices ? "hidden" : "";
-  }, [showChoices]);
+  const handleFollowUp = (
+    choice: "villa1" | "villa2" | "houserooms" | "villaVideo" | "houseVideo"
+  ) => {
+    setShowFollowUpChoices(false);
+    switch (choice) {
+      case "villa1":
+        router.push("/accommodation/villa1rooms");
+        break;
+      case "villa2":
+        router.push("/accommodation/villa2rooms");
+        break;
+      case "houserooms":
+        router.push("/accommodation/houserooms");
+        break;
+      case "villaVideo":
+        setNextVideoSrc("/videos/villa.mp4");
+        setSelectedMainChoice("villa");
+        break;
+      case "houseVideo":
+        setNextVideoSrc("/videos/house.mp4");
+        setSelectedMainChoice("house");
+        break;
+    }
+  };
 
-  // Pause/play intro video based on visibility using IntersectionObserver
+  // Lock scroll when modals are open
   useEffect(() => {
-    if (!started || nextVideoSrc) return;
+    document.body.style.overflow = showChoices || showFollowUpChoices ? "hidden" : "";
+  }, [showChoices, showFollowUpChoices]);
 
-    const video = introVideoRef.current;
+  // Show follow-up modal when second video ends
+  useEffect(() => {
+    const video = choiceVideoRef.current;
     if (!video) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (video.paused) {
-            video.play().catch(() => {});
-          }
-        } else {
-          if (!video.paused) {
-            video.pause();
-          }
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.disconnect();
+    const onEnded = () => {
+      if (selectedMainChoice === "villa" || selectedMainChoice === "house") {
+        setShowFollowUpChoices(true);
+      }
     };
-  }, [started, nextVideoSrc]);
+
+    video.addEventListener("ended", onEnded);
+    return () => video.removeEventListener("ended", onEnded);
+  }, [selectedMainChoice, nextVideoSrc]);
 
   return (
     <div className="relative w-screen h-screen bg-black text-white overflow-hidden">
       {/* Background Poster Image */}
       {!started && (
         <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-          <video
-            className="w-full h-full object-cover"
-            poster="/bg/bg.jpg"
-            muted
-            playsInline
-          />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+          <video className="w-full h-full object-cover" poster="/bg/bg.jpg" muted playsInline />
         </div>
       )}
 
-      {/* Intro Video */}
-      <video
-        ref={introVideoRef}
-        src="/videos/explore.mp4"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-          started ? "opacity-100" : "opacity-0"
-        }`}
-        muted
-        playsInline
-        onEnded={handleIntroEnd}
-      />
+      {/* Intro Video with scroll control */}
+      {started && !nextVideoSrc && (
+        <VideoPlayer
+          src="/videos/explore.mp4"
+          onEnded={handleIntroEnd}
+          className="absolute inset-0 transition-opacity duration-700 opacity-100"
+          muted
+          playsInline
+          scrollControl={true}
+          ref={introVideoRef}
+        />
+      )}
 
-      {/* Welcome + Explore Button */}
+      {/* Explore Button */}
       {!started && (
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-6 drop-shadow-lg">
+          <h1 className="text-3xl md:text-5xl font-serif font-extrabold mb-6 drop-shadow-lg">
             Discover Unique Escapes in Nature
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-xl text-white/80">
-            Our curated video journey helps you find your perfect getaway — whether you're dreaming of a tranquil villa or a cozy hillside house. Each option offers its own unique charm, captured with cinematic visuals to inspire your stay.
+            Our curated video journey helps you find your perfect getaway — whether you're dreaming of a
+            tranquil villa or a cozy hillside house.
           </p>
           <button
             onClick={handleExploreClick}
-            className="bg-white/90 text-black backdrop-blur-md hover:bg-white px-8 py-4 text-xl font-semibold rounded-lg shadow-xl transition-all"
+            className="w-20 h-20 rounded-full bg-white/90 text-black backdrop-blur-md shadow-xl group hover:scale-105 transition-all duration-300 relative"
           >
-            Start Exploring
+            <div className="absolute left-[38%] top-[30%] w-0 h-0 border-t-[16px] border-b-[16px] border-l-[24px] border-t-transparent border-b-transparent border-l-black group-hover:scale-110 transition-transform duration-300" />
           </button>
         </div>
       )}
 
-      {/* Option Selection Modal */}
+      {/* Initial Option Modal */}
       {showChoices && (
         <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-md p-6">
-          <div className="bg-white text-black rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-6 text-center">
+          <div className="relative bg-white text-black rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-6 text-center">
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              aria-label="Close modal"
+              className="absolute top-4 right-4 text-black hover:text-gray-600 font-bold text-2xl"
+            >
+              &times;
+            </button>
+
             <h2 className="text-2xl font-bold">What experience would you like to explore?</h2>
-            <p className="text-sm text-gray-600 mb-4">
-              Choose your ideal retreat to see what awaits.
-            </p>
             <div className="space-y-4">
               <button
                 onClick={() => handleSelection("villa")}
@@ -130,15 +159,81 @@ export default function ExplorePage() {
         </div>
       )}
 
-      {/* Final Video Preview */}
+      {/* Follow-Up Modal */}
+      {showFollowUpChoices && selectedMainChoice === "villa" && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-md p-6">
+          <div className="relative bg-white text-black rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-4 text-center">
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              aria-label="Close modal"
+              className="absolute top-4 right-4 text-black hover:text-gray-600 font-bold text-2xl"
+            >
+              &times;
+            </button>
+
+            <h2 className="text-2xl font-bold">Which villa would you like to explore?</h2>
+            <button
+              onClick={() => handleFollowUp("villa1")}
+              className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
+            >
+              Villa 1
+            </button>
+            <button
+              onClick={() => handleFollowUp("villa2")}
+              className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
+            >
+              Villa 2
+            </button>
+            <button
+              onClick={() => handleFollowUp("houseVideo")}
+              className="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg transition mt-2"
+            >
+              Actually... Show Me the House
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showFollowUpChoices && selectedMainChoice === "house" && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-md p-6">
+          <div className="relative bg-white text-black rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-4 text-center">
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              aria-label="Close modal"
+              className="absolute top-4 right-4 text-black hover:text-gray-600 font-bold text-2xl"
+            >
+              &times;
+            </button>
+
+            <h2 className="text-2xl font-bold">Ready to explore?</h2>
+            <button
+              onClick={() => handleFollowUp("houserooms")}
+              className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
+            >
+              Explore the House
+            </button>
+            <button
+              onClick={() => handleFollowUp("villaVideo")}
+              className="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg transition mt-2"
+            >
+              Actually... Show Me the Villas
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Second Video */}
       {nextVideoSrc && (
-        <video
-          ref={choiceVideoRef}
+        <VideoPlayer
           src={nextVideoSrc}
           className="absolute inset-0 w-full h-full object-cover z-20"
           autoPlay
           controls
           playsInline
+          scrollControl={true}
+          ref={choiceVideoRef}
         />
       )}
     </div>
