@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
-const backgroundImages = ["/bg.jpg", "/bg2.jpg", "/bg3.jpg"];
+const backgroundImages = ["/bg/bg.jpg", "/bg/bg2.jpg", "/bg/bg3.jpg"];
 const transitionDuration = 1.2; 
 const slideInterval = 7000; 
 
@@ -32,7 +32,7 @@ export default function Hero() {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              filter: "brightness(0.75) saturate(0.8) blur(1px)",
+              filter: "brightness(0.9) saturate(0.9) vibrance(1) blur(0px)",
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, scale: 1.05 }}
