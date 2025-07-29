@@ -64,6 +64,7 @@ export default function ExplorePage() {
       {/* Background Poster Image */}
       {!started && (
         <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
           <video
             className="w-full h-full object-cover"
             poster="/bg/bg.jpg"
