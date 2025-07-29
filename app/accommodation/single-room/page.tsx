@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import {useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-// import React360Viewer from "react-360-view";
+import SphereViewer from "@/components/PhotoSphereViewer";
 
 const roomImages = [
   "/rooms/single-room1.jpg",
@@ -39,6 +39,11 @@ export default function SingleRoom() {
           <h2 className="text-3xl font-bold text-[#F7E9D7] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
             Room Gallery
           </h2>
+          <section
+            className="relative h-[60vh] md:h-[70vh] flex items-center justify-center bg-cover bg-center"
+            style={{ backgroundImage: `url(${selectedImage})` }}
+          >
+          </section>
           <div className="flex gap-6 overflow-x-auto no-scrollbar py-2">
             {roomImages.map((img) => (
               <div
@@ -63,24 +68,13 @@ export default function SingleRoom() {
           </div>
         </section>
 
-        {/* 360° Panorama Viewer */}
-        {/* <section>
-          <h2 className="text-3xl font-bold text-[#4B2E1D] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
-            Explore in 360°
+        {/* 360° Virtual Room Viewer */}
+        <section>
+          <h2 className="text-3xl font-bold text-[#F7E9D7] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
+            Explore the Room
           </h2>
-
-          <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl border border-[#D4AF37]">
-            <React360Viewer
-              amount={36} // total frames in 360 sequence
-              imagePath="/360/single-room/" // folder path containing images named 1.jpg, 2.jpg, ... 36.jpg
-              fileName="single-room-{index}.jpg" // pattern, {index} replaced by frame number
-              autoplay={true}
-              loop={true}
-              width={800}
-              height={450}
-            />
-          </div>
-        </section> */}
+          <SphereViewer src="/rooms/panorama/single-room.jpg" />
+        </section>
 
         {/* Room Details */}
         <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">

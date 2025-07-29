@@ -28,7 +28,7 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const accommodationLinks = [
-    { label: "Single Room", href: "/single-room" },
+    { label: "Single Room", href: "/accommodation/single-room" },
     { label: "Double Room", href: "/double-room" },
     { label: "Family Suite", href: "/family-suite" },
   ];
