@@ -63,7 +63,7 @@ export default function WelcomeSection() {
               alt="Kandyan Nilame illustration flipped horizontally"
               width={160}
               height={160}
-              className="object-contain scale-x-[-1]"
+              className="object-contain scale-x-[-1] w-auto h-auto"
               quality={100}
               priority
             />
@@ -75,7 +75,7 @@ export default function WelcomeSection() {
               alt="Kandyan Nilame illustration"
               width={160}
               height={160}
-              className="object-contain"
+              className="object-contain w-auto h-auto"
               quality={100}
               priority
             />
