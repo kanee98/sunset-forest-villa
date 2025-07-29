@@ -4,7 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import React360Viewer from "react-360-view";
+// import React360Viewer from "react-360-view";
 
 const roomImages = [
   "/rooms/single-room1.jpg",

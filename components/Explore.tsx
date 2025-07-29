@@ -115,7 +115,7 @@ export default function ExplorePage() {
             Discover Unique Escapes in Nature
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-xl text-white/80">
-            Our curated video journey helps you find your perfect getaway — whether you're dreaming of a
+            Our curated video journey helps you find your perfect getaway — whether you&apos;re dreaming of a
             tranquil villa or a cozy hillside house.
           </p>
           <button

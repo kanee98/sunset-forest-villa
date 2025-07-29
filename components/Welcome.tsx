@@ -51,7 +51,7 @@ export default function WelcomeSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          "May you live a long, healthy, and happy life."
+          &quot;May you live a long, healthy, and happy life.&quot;
         </motion.p>
 
         {/* Kandyan Nilame illustrations (mirrored) */}

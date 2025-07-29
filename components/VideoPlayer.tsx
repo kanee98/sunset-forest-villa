@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, forwardRef, Ref } from "react";
+import React, { useRef, useEffect, forwardRef } from "react";
 import { useVideoScrollControl } from "@/hooks/useVideoScrollControl";
 
 type Props = {
@@ -11,32 +11,30 @@ type Props = {
   controls?: boolean;
   autoPlay?: boolean;
   scrollControl?: boolean;
-  playsInline?: boolean;  // Add this prop here
+  playsInline?: boolean;
 };
 
-// Forward ref so you can use ref from parent
-const VideoPlayer = forwardRef<HTMLVideoElement, Props>((
-  {
-    src,
-    onEnded,
-    className,
-    muted = true,
-    controls = false,
-    autoPlay = false,
-    scrollControl = false,
-    playsInline = true,  // default true
-  },
-  ref
-) => {
+const VideoPlayer = forwardRef<HTMLVideoElement, Props>(({
+  src,
+  onEnded,
+  className,
+  muted = true,
+  controls = false,
+  autoPlay = false,
+  scrollControl = false,
+  playsInline = true,
+}, ref) => {
   const internalRef = useRef<HTMLVideoElement>(null);
   const videoRef = (ref as React.RefObject<HTMLVideoElement>) || internalRef;
 
   useVideoScrollControl(videoRef, scrollControl);
 
+  // You can safely suppress the warning as videoRef is stable
   useEffect(() => {
     if (autoPlay) {
       videoRef.current?.play().catch(() => {});
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [src, autoPlay]);
 
   return (

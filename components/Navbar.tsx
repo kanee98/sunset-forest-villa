@@ -8,7 +8,6 @@ import { Menu, X, ChevronUp, ChevronDown } from "lucide-react";
 import KandyanDivider from "./KandyanDivider";
 import useNavbarState from "@/hooks/useNavbarState";
 import { Dancing_Script } from "next/font/google";
-import useActiveSection from "@/hooks/useActiveSection";
 
 const dancingScript = Dancing_Script({ weight: "600", subsets: ["latin"] });
 
@@ -20,8 +19,6 @@ export default function Navbar() {
 
   const accommodationRoutes = ["/accommodation", "/single-room", "/double-room", "/family-suite"];
   const isAccommodationActive = accommodationRoutes.includes(pathname);
-
-  const activeSection = useActiveSection(["about", "accommodation", "contact"]);
 
   const isActive = (path: string) =>
     pathname === path ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]";

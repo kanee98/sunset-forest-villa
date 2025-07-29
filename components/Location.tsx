@@ -48,7 +48,7 @@ export default function Location() {
             Visit Us in the Heart of Heritage
           </h2>
           <p className="text-gray-300 text-lg md:text-xl mb-12 max-w-3xl mx-auto">
-            Perched amidst the serene hills of Kandy, <span className="text-white font-semibold">Sunset Forest Villa</span> is more than a destination — it's an experience of nature, tradition, and timeless luxury.
+            Perched amidst the serene hills of Kandy, <span className="text-white font-semibold">Sunset Forest Villa</span> is more than a destination — it&apos;s an experience of nature, tradition, and timeless luxury.
           </p>
         </motion.div>
 
