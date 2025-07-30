@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronUp, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronUp, ChevronDown, ChevronRight } from "lucide-react"; // added ChevronRight
 import KandyanDivider from "./KandyanDivider";
 import useNavbarState from "@/hooks/useNavbarState";
 import { Dancing_Script } from "next/font/google";
@@ -16,6 +16,7 @@ export default function Navbar() {
   const { scrolled, isCompactView } = useNavbarState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [accommodationOpen, setAccommodationOpen] = useState(false);
+  const [openVillaSubmenus, setOpenVillaSubmenus] = useState<{ [key: string]: boolean }>({});
 
   const accommodationRoutes = ["/accommodation", "/single-room", "/double-room", "/family-suite"];
   const isAccommodationActive = accommodationRoutes.includes(pathname);
@@ -28,9 +29,23 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const accommodationLinks = [
-    { label: "Villa 1", href: "/accommodation/villa1rooms" },
-    { label: "Villa 2", href: "/accommodation/villa2rooms" },
-    { label: "Guest House", href: "/accommodation/houserooms" },
+    {
+      label: "Villa 1",
+      href: "/accommodation/villa1rooms",
+      children: [
+        { label: "Single Room", href: "/accommodation/villa1rooms/single-room" },
+        { label: "Double Room", href: "/accommodation/villa1rooms/double-room" },
+        { label: "Suite", href: "/accommodation/villa1rooms/suite" },
+      ],
+    },
+    {
+      label: "Villa 2",
+      href: "/accommodation/villa2rooms",
+    },
+    {
+      label: "Guest House",
+      href: "/accommodation/houserooms",
+    },
   ];
 
   return (
@@ -72,7 +87,7 @@ export default function Navbar() {
                     </button>
                     <ul className="absolute top-full left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
                       {accommodationLinks.map((item) => (
-                        <li key={item.href}>
+                        <li key={item.href} className="relative group/item">
                           <Link
                             href={item.href}
                             className={`block px-4 py-2 rounded-md transition-colors ${
@@ -81,8 +96,32 @@ export default function Navbar() {
                                 : "hover:bg-[#C09728] text-white"
                             }`}
                           >
-                            {item.label}
+                            <div className="flex justify-between items-center">
+                              <span>{item.label}</span>
+                              {item.children && (
+                                <ChevronRight size={16} className="ml-2" />
+                              )}
+                            </div>
                           </Link>
+
+                          {item.children && (
+                            <ul className="absolute left-full top-0 mt-0 ml-1 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-xl opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-0 transform translate-x-2 transition-all duration-300 z-50 p-2 space-y-1 pointer-events-none group-hover/item:pointer-events-auto divide-y divide-[#5C3A25]">
+                              {item.children.map((sub) => (
+                                <li key={sub.href}>
+                                  <Link
+                                    href={sub.href}
+                                    className={`block px-4 py-2 rounded-md transition-colors ${
+                                      pathname === sub.href
+                                        ? "bg-[#C09728] text-white font-semibold"
+                                        : "hover:bg-[#C09728] text-white"
+                                    }`}
+                                  >
+                                    {sub.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -126,17 +165,41 @@ export default function Navbar() {
               </button>
               <ul className="absolute top-full left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
                 {accommodationLinks.map((item) => (
-                  <li key={item.href}>
+                  <li key={item.href} className="relative group/item">
                     <Link
                       href={item.href}
                       className={`block px-4 py-2 rounded-md transition-colors ${
                         pathname === item.href
                           ? "bg-[#C09728] text-white font-semibold"
                           : "hover:bg-[#C09728] text-white"
-                      }`}
+                        }`}
                     >
-                      {item.label}
+                      <div className="flex justify-between items-center">
+                        <span>{item.label}</span>
+                        {item.children && (
+                          <ChevronRight size={16} className="ml-2" />
+                        )}
+                      </div>
                     </Link>
+
+                    {item.children && (
+                      <ul className="absolute left-full top-0 mt-0 ml-1 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-xl opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-0 transform translate-x-2 transition-all duration-300 z-50 p-2 space-y-1 pointer-events-none group-hover/item:pointer-events-auto divide-y divide-[#5C3A25]">
+                        {item.children.map((sub) => (
+                          <li key={sub.href}>
+                            <Link
+                              href={sub.href}
+                              className={`block px-4 py-2 rounded-md transition-colors ${
+                                pathname === sub.href
+                                  ? "bg-[#C09728] text-white font-semibold"
+                                  : "hover:bg-[#C09728] text-white"
+                              }`}
+                            >
+                              {sub.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -202,15 +265,50 @@ export default function Navbar() {
                     <ul className="mt-3 ml-4 flex flex-col space-y-3 text-[#d4af37]">
                       {accommodationLinks.map((item) => (
                         <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className={`block px-3 py-2 rounded ${
-                              pathname === item.href ? "bg-[#2a2a2a] font-semibold text-white" : "hover:bg-[#2a2a2a]"
-                            }`}
-                          >
-                            {item.label}
-                          </Link>
+                          <div className="flex items-center justify-between">
+                            <Link
+                              href={item.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={`block px-3 py-2 rounded w-full ${
+                                pathname === item.href ? "bg-[#2a2a2a] font-semibold text-white" : "hover:bg-[#2a2a2a]"
+                              }`}
+                            >
+                              {item.label}
+                            </Link>
+
+                            {item.children && (
+                              <button
+                                onClick={() =>
+                                  setOpenVillaSubmenus((prev) => ({
+                                    ...prev,
+                                    [item.href]: !prev[item.href],
+                                  }))
+                                }
+                                className="text-[#D4AF37] ml-2"
+                              >
+                                {openVillaSubmenus[item.href] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                              </button>
+                            )}
+                          </div>
+
+                          {/* Submenu */}
+                          {item.children && openVillaSubmenus[item.href] && (
+                            <ul className="ml-4 mt-2 space-y-2 text-sm text-[#d4af37]">
+                              {item.children.map((sub) => (
+                                <li key={sub.href}>
+                                  <Link
+                                    href={sub.href}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className={`block px-3 py-1 rounded ${
+                                      pathname === sub.href ? "bg-[#2a2a2a] font-semibold text-white" : "hover:bg-[#2a2a2a]"
+                                    }`}
+                                  >
+                                    {sub.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </li>
                       ))}
                     </ul>
