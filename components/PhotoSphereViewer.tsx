@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import PhotoSphereViewer from "photo-sphere-viewer";
+import { Viewer } from "photo-sphere-viewer";
 import "photo-sphere-viewer/dist/photo-sphere-viewer.css";
 
 type Props = {
@@ -15,7 +15,7 @@ const SphereViewer = ({ src, height = "450px" }: Props) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const viewer = new PhotoSphereViewer.Viewer({
+    const viewer = new Viewer({
       container: containerRef.current,
       panorama: src,
       defaultLong: 0,
