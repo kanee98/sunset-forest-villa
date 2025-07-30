@@ -152,7 +152,7 @@ export default function ExplorePage() {
                 onClick={() => handleSelection("house")}
                 className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
               >
-                Explore Our House
+                Explore Our Guest House
               </button>
             </div>
           </div>
@@ -189,7 +189,7 @@ export default function ExplorePage() {
               onClick={() => handleFollowUp("houseVideo")}
               className="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg transition mt-2"
             >
-              Actually... Show Me the House
+              Actually... Show Me the Guest House
             </button>
           </div>
         </div>
@@ -212,7 +212,7 @@ export default function ExplorePage() {
               onClick={() => handleFollowUp("houserooms")}
               className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
             >
-              Explore the House
+              Explore the Guest House
             </button>
             <button
               onClick={() => handleFollowUp("villaVideo")}

@@ -28,9 +28,9 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const accommodationLinks = [
-    { label: "Single Room", href: "/accommodation/single-room" },
-    { label: "Double Room", href: "/double-room" },
-    { label: "Family Suite", href: "/family-suite" },
+    { label: "Villa 1", href: "/accommodation/villa1rooms" },
+    { label: "Villa 2", href: "/accommodation/villa2rooms" },
+    { label: "Guest House", href: "/accommodation/houserooms" },
   ];
 
   return (

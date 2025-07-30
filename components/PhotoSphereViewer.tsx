@@ -20,7 +20,12 @@ const SphereViewer = ({ src, height = "450px" }: Props) => {
       panorama: src,
       defaultLong: 0,
       defaultLat: 0,
-      navbar: [],
+      navbar: [
+        'autorotate',
+        'zoom',
+        'fullscreen',
+        'caption'
+      ],
     });
 
     return () => viewer.destroy();
