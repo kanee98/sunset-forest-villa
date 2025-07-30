@@ -41,10 +41,20 @@ export default function Navbar() {
     {
       label: "Villa 2",
       href: "/accommodation/villa2rooms",
+      children: [
+        { label: "Single Room", href: "/accommodation/villa1rooms/single-room" },
+        { label: "Double Room", href: "/accommodation/villa1rooms/double-room" },
+        { label: "Suite", href: "/accommodation/villa1rooms/suite" },
+      ],
     },
     {
       label: "Guest House",
       href: "/accommodation/houserooms",
+      children: [
+        { label: "Single Room", href: "/accommodation/villa1rooms/single-room" },
+        { label: "Double Room", href: "/accommodation/villa1rooms/double-room" },
+        { label: "Suite", href: "/accommodation/villa1rooms/suite" },
+      ],
     },
   ];
 
