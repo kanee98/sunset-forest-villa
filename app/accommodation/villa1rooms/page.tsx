@@ -1,8 +1,6 @@
 "use client";
 
 import {useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import SphereViewer from "@/components/PhotoSphereViewer";
 
@@ -18,8 +16,6 @@ export default function SingleRoom() {
 
   return (
     <>
-      <Navbar />
-
       {/* Hero Banner */}
       <section
         className="relative h-[60vh] md:h-[70vh] flex items-center justify-center bg-cover bg-center"
@@ -97,8 +93,6 @@ export default function SingleRoom() {
           </button>
         </section>
       </main>
-
-      <Footer />
     </>
   );
 }

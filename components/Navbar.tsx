@@ -216,7 +216,7 @@ export default function Navbar() {
             </div>
             <Link href="/contact" className={`transition ${isActive("/contact")}`}>Contact Us</Link>
             <Link
-              href="#book"
+              href="/book-now"
               className="ml-6 px-5 py-2 bg-[#D4AF37] text-black font-semibold rounded-full hover:bg-[#f8d564ff] transition"
             >
               Book Now
@@ -329,7 +329,7 @@ export default function Navbar() {
               </ul>
 
               <Link
-                href="#book"
+                href="/book-now"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-auto inline-block px-6 py-3 bg-[#D4AF37] text-black font-semibold rounded-full text-center hover:bg-[#f8d564ff] transition"
               >

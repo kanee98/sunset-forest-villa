@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -16,8 +14,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative h-[85vh] bg-fixed bg-center bg-cover flex items-center justify-center" style={{ backgroundImage: "url('/bg.jpg')" }}>
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
@@ -177,8 +173,6 @@ export default function ContactPage() {
           </form>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }

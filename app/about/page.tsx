@@ -1,7 +1,5 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
@@ -20,8 +18,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <Navbar />
-
       {/* Hero Section */}
       <section
         className="relative h-[85vh] bg-fixed bg-center bg-cover flex items-center justify-center"
@@ -233,8 +229,6 @@ export default function AboutPage() {
           </AnimatePresence>
         </section>
       </main>
-
-      <Footer />
     </>
   );
 }

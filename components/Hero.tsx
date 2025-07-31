@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const backgroundImages = ["/bg/bg.jpg", "/bg/bg2.jpg", "/bg/bg3.jpg"];
-const transitionDuration = 1.2; 
-const slideInterval = 7000; 
+const slideInterval = 5000;
 
 export default function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -19,44 +19,33 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-36 text-white overflow-hidden">
+    <section className="relative w-full h-screen flex items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-36 text-white overflow-hidden bg-black">
 
-      {/* Background Slider */}
+      {/* Fading Backgrounds */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={backgroundImages[currentImage]}
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${backgroundImages[currentImage]})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              filter: "brightness(0.9) saturate(0.9) vibrance(1) blur(0px)",
-            }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1, scale: 1.05 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: transitionDuration }}
-          />
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <Image
+              src={backgroundImages[currentImage]}
+              alt="Hero Background"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Gradient Overlay */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background: `
-            linear-gradient(to right, rgba(247, 233, 215, 0.8) 0%, rgba(232, 200, 156, 0.6) 30%, rgba(255, 255, 255, 0.2) 60%, rgba(232, 200, 156, 0.4) 85%, rgba(247, 233, 215, 0.6) 100%),
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0))
-          `,
-          mixBlendMode: "multiply",
-        }}
-      />
-
-      {/* Text Content */}
+      {/* Content */}
       <motion.div
-        className="z-20 max-w-xl text-left md:text-left"
+        className="z-20 max-w-xl text-left"
         initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1 }}
@@ -75,7 +64,7 @@ export default function Hero() {
         </a>
       </motion.div>
 
-      {/* Social Media Icons */}
+      {/* Social Icons */}
       <motion.div
         className="hidden md:flex flex-col gap-6 z-20"
         initial={{ x: 30, opacity: 0 }}
