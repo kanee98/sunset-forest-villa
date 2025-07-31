@@ -3,7 +3,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const galleryImages = [
   "/gallery/bg.jpg",
@@ -15,6 +16,8 @@ const galleryImages = [
 ];
 
 export default function AboutPage() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <>
       <Navbar />
@@ -84,7 +87,6 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className=""
             >
               <h3 className="font-semibold text-xl mb-2">Our Vision</h3>
               <p>
@@ -95,7 +97,6 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className=""
             >
               <h3 className="font-semibold text-xl mb-2">Our Mission</h3>
               <p>
@@ -105,7 +106,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-       {/* Message from Proprietor */}
+        {/* Message from Proprietor */}
         <section className="max-w-4xl mx-auto bg-white rounded-3xl p-14 shadow-xl text-[#4B2E1D] space-y-8">
           <h2 className="text-4xl font-bold border-b-4 border-[#B8860B] inline-block pb-1 mb-6">
             A Message from Our Proprietor
@@ -129,7 +130,7 @@ export default function AboutPage() {
             {/* Image */}
             <div className="md:w-80 w-full rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/proprietor.png"  
+                src="/proprietor.png"
                 alt="Ravi Perera"
                 width={320}
                 height={400}
@@ -146,10 +147,10 @@ export default function AboutPage() {
           </h2>
           <ul className="list-disc list-inside text-lg space-y-3">
             <li>Peaceful Forest Surroundings: Wake up to birdsong and greenery.</li>
-            <li>Private & Comfortable: Only one villa total privacy guaranteed.</li>
+            <li>Private & Comfortable: Only one villa — total privacy guaranteed.</li>
             <li>Close to City & Attractions: Just 2 km from Kandy town.</li>
             <li>Genuine Hospitality: Managed with personal care and warmth.</li>
-            <li>Ideal for All Types of Guests: Perfect for families, couples, and even digital nomads.</li>
+            <li>Ideal for All Types of Guests: Perfect for families, couples, and digital nomads.</li>
           </ul>
         </section>
 
@@ -182,6 +183,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
+                onClick={() => setSelectedImage(src)}
               >
                 <Image
                   src={src}
@@ -194,6 +196,41 @@ export default function AboutPage() {
               </motion.div>
             ))}
           </div>
+
+          {/* Fullscreen Image Modal */}
+          <AnimatePresence>
+            {selectedImage && (
+              <motion.div
+                className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedImage(null)}
+              >
+                <motion.div
+                  className="relative max-w-5xl w-full"
+                  initial={{ scale: 0.9 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0.9 }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Image
+                    src={selectedImage}
+                    alt="Full screen view"
+                    width={1200}
+                    height={800}
+                    className="rounded-xl w-full h-auto object-contain"
+                  />
+                  <button
+                    onClick={() => setSelectedImage(null)}
+                    className="absolute top-3 right-3 text-white bg-black/70 p-2 rounded-full hover:bg-black"
+                  >
+                    ✕
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </section>
       </main>
 
