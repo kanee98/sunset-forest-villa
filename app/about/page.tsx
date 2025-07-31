@@ -5,27 +5,6 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const teamMembers = [
-  {
-    name: "Ravi Perera",
-    role: "General Manager",
-    img: "/bg.jpg",
-    bio: "Bringing 15+ years of expertise, Ravi blends hospitality excellence with Kandyan tradition.",
-  },
-  {
-    name: "Nisha Fernando",
-    role: "Guest Relations",
-    img: "/bg2.jpg",
-    bio: "Expert in personalized guest service ensuring memorable stays.",
-  },
-  {
-    name: "Suneth Perera",
-    role: "Operations Manager",
-    img: "/bg3.jpg",
-    bio: "Mastermind behind smooth operations and authentic experiences.",
-  },
-];
-
 const galleryImages = [
   "/gallery/bg.jpg",
   "/gallery/bg2.jpg",
@@ -126,37 +105,66 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
-        <section>
-          <h2 className="text-4xl font-bold text-[#4B2E1D] mb-14 border-b-4 border-[#B8860B] pb-2 text-center">
-            Meet Our Team
+       {/* Message from Proprietor */}
+        <section className="max-w-4xl mx-auto bg-white rounded-3xl p-14 shadow-xl text-[#4B2E1D] space-y-8">
+          <h2 className="text-4xl font-bold border-b-4 border-[#B8860B] inline-block pb-1 mb-6">
+            A Message from Our Proprietor
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-            {teamMembers.map(({ name, role, img, bio }) => (
-              <motion.div
-                key={name}
-                className="flex flex-col items-center text-center space-y-5 place-items-center bg-white rounded-2xl p-6 shadow-lg border border-[#D4AF37]"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg border-4 border-[#D4AF37]">
-                  <Image
-                    src={img}
-                    alt={name}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-[#4B2E1D]">{name}</h3>
-                <p className="italic text-[#5C4433]">{role}</p>
-                <p className="max-w-xs text-[#5C4433]">{bio}</p>
-              </motion.div>
-            ))}
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
+            {/* Text */}
+            <div className="md:flex-1 space-y-6">
+              <p className="text-lg leading-relaxed">
+                I’m the proprietor of Sunset Forest Villa, and I welcome you to our humble sanctuary. This villa is a reflection of my love for nature, peace, and authentic hospitality. Every detail from the rooms to the garden has been designed with care to give you a memorable stay.
+              </p>
+              <p className="text-lg leading-relaxed">
+                Whether you're exploring Kandy's cultural treasures or simply relaxing with a cup of tea while watching the sunset, this place is meant to feel like your home away from home.
+              </p>
+              <p className="text-lg leading-relaxed italic font-semibold">
+                I look forward to hosting you and making your stay truly special.<br />
+                – Ravi Perera
+              </p>
+            </div>
+
+            {/* Image */}
+            <div className="md:w-80 w-full rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/proprietor.png"  
+                alt="Ravi Perera"
+                width={320}
+                height={400}
+                className="object-cover w-full h-full"
+              />
+            </div>
           </div>
+        </section>
+
+        {/* What Makes Us Unique */}
+        <section className="max-w-4xl mx-auto bg-[#F7E9D7] rounded-3xl p-14 shadow-xl text-[#4B2E1D] space-y-6">
+          <h2 className="text-4xl font-bold border-b-4 border-[#B8860B] inline-block pb-1 mb-6">
+            What Makes Us Unique?
+          </h2>
+          <ul className="list-disc list-inside text-lg space-y-3">
+            <li>Peaceful Forest Surroundings: Wake up to birdsong and greenery.</li>
+            <li>Private & Comfortable: Only one villa total privacy guaranteed.</li>
+            <li>Close to City & Attractions: Just 2 km from Kandy town.</li>
+            <li>Genuine Hospitality: Managed with personal care and warmth.</li>
+            <li>Ideal for All Types of Guests: Perfect for families, couples, and even digital nomads.</li>
+          </ul>
+        </section>
+
+        {/* Why Choose Us */}
+        <section className="max-w-4xl mx-auto bg-white rounded-3xl p-14 shadow-xl text-[#4B2E1D] space-y-6">
+          <h2 className="text-4xl font-bold border-b-4 border-[#B8860B] inline-block pb-1 mb-6">
+            Why Choose Us?
+          </h2>
+          <ul className="list-disc list-inside text-lg space-y-3">
+            <li>Prime Location with Mountain & Forest Views</li>
+            <li>Family-Friendly Villas for Groups</li>
+            <li>Personalised Hospitality & Owner-Operated</li>
+            <li>Affordable Pricing with Premium Comfort</li>
+            <li>Ideal for Couples, Families, and Group Retreats</li>
+          </ul>
         </section>
 
         {/* Gallery Section */}
