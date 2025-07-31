@@ -38,9 +38,25 @@ export default function ContactPage() {
 
       {/* Main Content */}
       <main className="bg-[#FCF8F3] py-24 px-6 sm:px-12 lg:px-32">
+        {/* Weather Widget Card */}
+        <div className="bg-white/80 border border-[#e3d9c8] rounded-xl shadow-lg p-6 backdrop-blur-sm mb-10">
+          <h3 className="text-xl font-semibold text-[#4B2E1D] mb-2">Current Weather</h3>
+          <a
+            className="weatherwidget-io"
+            href="https://forecast7.com/en/7d2980d63/kandy/"
+            data-label_1="KANDY"
+            data-label_2="WEATHER"
+            data-theme="pure"
+            data-basecolor="#ffffff"
+            data-accent="#4B2E1D"
+            data-textcolor="#B8860B"
+          >
+            KANDY WEATHER
+          </a>
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left Panel - Contact Info & Weather */}
-          <div className="space-y-10">
+          {/* Left Panel - Contact Info & FAQ */}
+          <div className="bg-white border border-[#e3d9c8] shadow-lg rounded-2xl p-8 space-y-6 space-y-10">
             <div>
               <h2 className="text-3xl font-semibold text-[#4B2E1D] mb-4">Contact Information</h2>
               <p className="text-[#4B2E1D]/80 mb-6">
@@ -65,23 +81,46 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+            {/* FAQ Section */}
+            <section className="pb-24">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-3xl font-semibold text-[#4B2E1D] mb-8 text-left">Frequently Asked Questions</h2>
 
-            {/* Weather Widget Card */}
-            <div className="bg-white/80 border border-[#e3d9c8] rounded-xl shadow-lg p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-semibold text-[#4B2E1D] mb-2">Current Weather</h3>
-              <a
-                className="weatherwidget-io"
-                href="https://forecast7.com/en/7d2980d63/kandy/"
-                data-label_1="KANDY"
-                data-label_2="WEATHER"
-                data-theme="pure"
-                data-basecolor="#ffffff"
-                data-accent="#4B2E1D"
-                data-textcolor="#B8860B"
-              >
-                KANDY WEATHER
-              </a>
-            </div>
+                <div className="space-y-4">
+                  {[
+                    {
+                      question: "What are the check-in and check-out times?",
+                      answer: "Check-in starts at 2:00 PM and check-out is by 11:00 AM."
+                    },
+                    {
+                      question: "Do you have WiFi and kitchen access",
+                      answer: "Yes, we provide free high-speed Wi-Fi and a fully equipped kitchen for self-cooking."
+                    },
+                    {
+                      question: "Can we book the whole villa for a group?",
+                      answer: "Absolutely! The Three-Bedroom Villa is perfect for group stays up to 10 guests."
+                    },
+                    {
+                      question: "Do you offer airport transfers?",
+                      answer: "Yes, we can arrange airport transfers upon request. Additional charges may apply."
+                    },
+                    {
+                      question: "Are pets allowed at the villa?",
+                      answer: "Unfortunately, pets are not allowed in our villa premises."
+                    },
+                    {
+                      question: "How can I modify or cancel my booking?",
+                      answer: "Please reach out to us via phone or email at least 48 hours in advance to modify or cancel bookings."
+                    }
+                  ].map(({ question, answer }, idx) => (
+                    <details key={idx} className="border border-[#e3d9c8] bg-white rounded-md p-4">
+                      <summary className="cursor-pointer font-medium text-[#4B2E1D] text-lg">{question}</summary>
+                      <p className="mt-2 text-[#4B2E1D]/80">{answer}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </section>  
           </div>
 
           {/* Right Panel - Contact Form */}
