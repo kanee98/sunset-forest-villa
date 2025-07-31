@@ -1,6 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import {
+  BedDouble,
+  Tv,
+  Utensils,
+  Mountain,
+  Wifi,
+  Sparkles,
+  ShieldCheck,
+  MapPin,
+} from "lucide-react";
 
 const rooms = [
   {
@@ -23,8 +33,20 @@ const rooms = [
   },
 ];
 
+const amenities = [
+  { icon: BedDouble, label: "Fully Furnished Villa" },
+  { icon: Tv, label: "Living Area with Smart TV" },
+  { icon: Utensils, label: "Well-Equipped Kitchen" },
+  { icon: Mountain, label: "Private Balcony with Forest View" },
+  { icon: Wifi, label: "High-Speed Wi-Fi" },
+  { icon: Sparkles, label: "Optional Cleaning Service" },
+  { icon: ShieldCheck, label: "Safe & Peaceful Neighborhood" },
+  { icon: MapPin, label: "Close to Kandy City (2km)" },
+];
+
 export default function RoomShowcase() {
   return (
+    <>
     <section id="rooms" className="relative py-24 px-6 max-w-7xl mx-auto z-10">
       <h2 className="text-4xl md:text-5xl font-serif font-bold text-center text-white mb-12 tracking-wide">
         Our Signature Rooms
@@ -57,5 +79,23 @@ export default function RoomShowcase() {
         ))}
       </div>
     </section>
+    {/* What We Offer Section */}
+    <section className="pb-24 px-6 sm:px-12 lg:px-32">
+      <h2 className="text-4xl md:text-5xl font-serif font-bold text-center text-white mb-12 tracking-wide">
+        What We Offer
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        {amenities.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-4 bg-white border border-[#e3d9c8] shadow-sm rounded-xl p-4"
+          >
+            <item.icon className="text-[#B8860B] w-6 h-6 shrink-0" />
+            <span className="text-[#4B2E1D] font-medium">{item.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+    </>
   );
 }
