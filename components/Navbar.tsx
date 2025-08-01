@@ -33,27 +33,27 @@ export default function Navbar() {
       label: "Villa 1",
       href: "/accommodation/villa1rooms",
       children: [
+        { label: "Double Room", href: "/accommodation/villa1rooms/doubleroom" },
         { label: "Triple Room", href: "/accommodation/villa1rooms/tripleroom" },
         { label: "Family Room", href: "/accommodation/villa1rooms/familyroom" },
-        { label: "Suite", href: "/accommodation/villa1rooms/suite" },
       ],
     },
     {
       label: "Villa 2",
       href: "/accommodation/villa2rooms",
       children: [
-        { label: "Single Room", href: "/accommodation/villa1rooms/single-room" },
-        { label: "Double Room", href: "/accommodation/villa1rooms/double-room" },
-        { label: "Suite", href: "/accommodation/villa1rooms/suite" },
+        { label: "Double Room", href: "/accommodation/villa2rooms/doubleroom" },
+        { label: "Triple Room", href: "/accommodation/villa2rooms/tripleroom" },
+        { label: "Family Room", href: "/accommodation/villa2rooms/familyroom" },
       ],
     },
     {
       label: "Guest House",
       href: "/accommodation/houserooms",
       children: [
-        { label: "Single Room", href: "/accommodation/villa1rooms/single-room" },
-        { label: "Double Room", href: "/accommodation/villa1rooms/double-room" },
-        { label: "Suite", href: "/accommodation/villa1rooms/suite" },
+        { label: "Double Room", href: "/accommodation/houserooms/doubleroom" },
+        { label: "Triple Room", href: "/accommodation/houserooms/tripleroom" },
+        { label: "Family Room", href: "/accommodation/houserooms/familyroom" },
       ],
     },
   ];

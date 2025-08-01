@@ -27,7 +27,7 @@ export default function SingleRoom() {
         style={{ backgroundImage: `url(${selectedImage})` }}
       >
         <div className="absolute inset-0 bg-black/50" />
-        <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-12">
+        <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-36">
           Family Room with Mountain View
         </h1>
       </section>
