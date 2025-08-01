@@ -3,6 +3,7 @@
 import {useState } from "react";
 import Image from "next/image";
 // import SphereViewer from "@/components/PhotoSphereViewer";
+import Link from "next/link";
 
 const roomImages = [
   "/rooms/House/1.webp",
@@ -79,25 +80,29 @@ export default function SingleRoom() {
             <SphereViewer src="/rooms/HR1/pano.jpg" />
           </section> */}
 
-          {/* Room Details */}
-          <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">
+          {/* The Canopy House Details */}
+          <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6 mt-16">
             <h2 className="text-3xl font-bold border-b-4 border-[#B8860B] inline-block pb-2">
-              Guest House Details
+              The Canopy House
             </h2>
             <p className="text-lg leading-relaxed">
-              Our cozy Single Room offers guests a perfect blend of comfort and traditional Kandyan aesthetics. Featuring a queen-sized bed, private balcony with stunning forest views, and modern amenities including air conditioning, Wi-Fi, and en-suite bathroom.
+              The Canopy House is a charming nature-inspired guesthouse offering three cozy rooms. 
+              Surrounded by lush greenery, each room provides a tranquil escape with modern comforts. 
+              Guests can enjoy access to a fully equipped shared kitchen and experience the peaceful rhythm of forest life.
             </p>
             <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
-              <li>Queen-sized bed with premium linens</li>
-              <li>Private balcony overlooking the gardens</li>
-              <li>Complimentary high-speed Wi-Fi</li>
-              <li>Air conditioning and ceiling fan</li>
-              <li>En-suite bathroom with hot water</li>
-              <li>Tea & coffee making facilities</li>
+              <li>3 comfortable rooms with private/shared bathrooms</li>
+              <li>Complimentary high-speed Wi-Fi in all areas</li>
+              <li>Hot water showers in all rooms</li>
+              <li>Access to fully equipped shared kitchen</li>
+              <li>Comfortable bedding and essential amenities</li>
+              <li>Ideal for families, small groups, or solo travelers</li>
             </ul>
-            <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
-              Book Now
-            </button>
+            <Link href="/book-now">
+              <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
+                Book Now
+              </button>
+            </Link>
           </section>
         </main>
       </section>

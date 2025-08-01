@@ -3,6 +3,7 @@
 import {useState } from "react";
 import Image from "next/image";
 import SphereViewer from "@/components/PhotoSphereViewer";
+import Link from "next/link";
 
 const roomImages = [
   "/rooms/HR2/1.webp",
@@ -26,7 +27,7 @@ export default function SingleRoom() {
       >
         <div className="absolute inset-0 bg-black/50" />
         <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-36">
-          Family Room with Mountain View
+          Forest Hideaway Room
         </h1>
       </section>
 
@@ -78,25 +79,26 @@ export default function SingleRoom() {
             <SphereViewer src="/rooms/HR2/pano.jpg" />
           </section>
 
-          {/* Room Details */}
-          <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">
+          {/* Room 3 – Forest Hideaway Room */}
+          <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6 mt-12">
             <h2 className="text-3xl font-bold border-b-4 border-[#B8860B] inline-block pb-2">
-              Room Details
+              Forest Hideaway Room
             </h2>
             <p className="text-lg leading-relaxed">
-              Our cozy Single Room offers guests a perfect blend of comfort and traditional Kandyan aesthetics. Featuring a queen-sized bed, private balcony with stunning forest views, and modern amenities including air conditioning, Wi-Fi, and en-suite bathroom.
+              This cozy room offers a double bed and shares a bathroom with the Forest Corner Room. Surrounded by rich greenery, it’s perfect for guests who want an intimate and authentic forest experience.
             </p>
             <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
-              <li>Queen-sized bed with premium linens</li>
-              <li>Private balcony overlooking the gardens</li>
+              <li>Double bed with cozy bedding</li>
+              <li>Shared bathroom with Forest Corner Room</li>
               <li>Complimentary high-speed Wi-Fi</li>
-              <li>Air conditioning and ceiling fan</li>
-              <li>En-suite bathroom with hot water</li>
-              <li>Tea & coffee making facilities</li>
+              <li>Access to shared kitchen</li>
+              <li>Ceiling fan for cooling</li>
             </ul>
-            <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
-              Book Now
-            </button>
+            <Link href="/book-now">
+              <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
+                Book Now
+              </button>
+            </Link>
           </section>
         </main>
       </section>

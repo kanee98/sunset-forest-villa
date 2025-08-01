@@ -54,9 +54,9 @@ export default function Navbar() {
       label: "The Canopy House",
       href: "/accommodation/houserooms",
       children: [
-        { label: "Double Room", href: "/accommodation/houserooms/doubleroom" },
-        { label: "Triple Room", href: "/accommodation/houserooms/tripleroom" },
-        { label: "Family Room", href: "/accommodation/houserooms/familyroom" },
+        { label: "Double Room - Forest Hideaway Room", href: "/accommodation/houserooms/familyroom" },
+        { label: "Triple Room - Garden View Room", href: "/accommodation/houserooms/tripleroom" },     
+        { label: "Family Room - Forest Corner Room", href: "/accommodation/houserooms/doubleroom" },
       ],
     },
   ];
@@ -98,7 +98,7 @@ export default function Navbar() {
                       <span>Accommodation</span>
                       <ChevronDown size={16} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
                     </button>
-                    <ul className="absolute top-full left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
+                    <ul className="absolute top-full text-left left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
                       {accommodationLinks.map((item) => (
                         <li key={item.href} className="relative group/item">
                           <Link
