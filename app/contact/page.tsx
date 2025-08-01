@@ -16,6 +16,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
 
@@ -25,18 +26,24 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("loading");
 
+    const currentTime = new Date().toLocaleString();
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      time: currentTime,
+    };
+
     try {
       await emailjs.send(
         "service_bw2u5ze",
         "template_h4hwyuk",
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          message: formData.message,
-        },
+        templateParams,
         "K-S9YZeukjUULp3IR"
       );
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
       setStatus("success");
     } catch (error) {
       console.error(error);
@@ -92,15 +99,15 @@ export default function ContactPage() {
               <div className="space-y-4 text-[#4B2E1D] text-lg">
                 <div className="flex items-center gap-3">
                   <Phone className="text-[#B8860B]" />
-                  <span>+94 77 123 4567</span>
+                  <span>+94 77 997 8591</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="text-[#B8860B]" />
-                  <span>info@sunsetforestvilla.com</span>
+                  <span>hello@sunsetforestvilla.lk</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="text-[#B8860B]" />
-                  <span>Sunset Forest Villa,<br />Kandy, Sri Lanka</span>
+                  <span>Sunset Forest Villa,<br />Wagolla Road, Aruppola,<br />Kandy, Sri Lanka</span>
                 </div>
               </div>
             </div>
@@ -150,6 +157,22 @@ export default function ContactPage() {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#B8860B] outline-none"
+                />
+              </div>
+              <div>
+                <label htmlFor="phone" className="block text-sm text-[#4B2E1D] mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  id="phone"
+                  required
+                  value={formData.phone}
+                  onChange={(e) => {
+                    const onlyNumbers = e.target.value.replace(/\D/g, ""); // remove non-digits
+                    setFormData({ ...formData, phone: onlyNumbers });
+                  }}
                   className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#B8860B] outline-none"
                 />
               </div>
