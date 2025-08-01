@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -56,12 +57,12 @@ export default function Hero() {
         <p className="mt-4 text-lg sm:text-xl text-white/90">
           Discover timeless comfort and elegant luxury at Sun Set Forest Villa.
         </p>
-        <a
-          href="/book-now"
-          className="inline-block mt-6 px-8 py-3 bg-white text-black font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition"
-        >
-          Book Your Stay
-        </a>
+        
+        <Link href="/book-now" passHref>
+          <div className="inline-block mt-6 px-8 py-3 bg-white text-black font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition cursor-pointer">
+            Book Your Stay
+          </div>
+        </Link>
       </motion.div>
 
       {/* Social Icons */}
