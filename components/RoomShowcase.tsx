@@ -47,7 +47,7 @@ const amenities = [
 export default function RoomShowcase() {
   return (
     <>
-    <section className="bg-[#0f172a] py-12 px-6 sm:px-12 lg:px-32">
+    <section className="bg-[#0f172a] px-6 sm:px-12 lg:px-32">
       <section id="rooms" className="relative py-24 px-6 max-w-7xl mx-auto z-10">
         <h2 className="text-4xl md:text-5xl font-serif font-bold text-center text-white mb-12 tracking-wide">
           Our Signature Rooms

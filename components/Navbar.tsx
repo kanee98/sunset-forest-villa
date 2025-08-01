@@ -33,7 +33,7 @@ export default function Navbar() {
       label: "Villa 1",
       href: "/accommodation/villa1rooms",
       children: [
-        { label: "Single Room", href: "/accommodation/villa1rooms/single-room" },
+        { label: "Triple Room", href: "/accommodation/villa1rooms/tripleroom" },
         { label: "Double Room", href: "/accommodation/villa1rooms/double-room" },
         { label: "Suite", href: "/accommodation/villa1rooms/suite" },
       ],
