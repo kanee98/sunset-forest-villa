@@ -15,19 +15,19 @@ import {
 const rooms = [
   {
     title: "Forest View Suite",
-    price: "$199",
+    price: "Rs. 6,500",
     img: "/rooms/V1R1/1.webp",
     description: "Wake up to serene views of the lush forest.",
   },
   {
     title: "Skyline Deluxe",
-    price: "$249",
+    price: "Rs. 5,000",
     img: "/rooms/V1R2/1.webp",
     description: "Unwind under a starry Kandyan sky.",
   },
   {
     title: "Eco Bungalow",
-    price: "$179",
+    price: "Rs. 15,000",
     img: "/rooms/V2R1/1.webp",
     description: "Sustainable comfort surrounded by nature.",
   },

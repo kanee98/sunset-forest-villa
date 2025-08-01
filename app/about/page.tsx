@@ -30,7 +30,7 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
         >
-          <h1 className="text-white text-5xl md:text-7xl font-extrabold drop-shadow-lg font-serif">
+          <h1 className="text-white text-5xl md:text-7xl font-extrabold drop-shadow-lg font-serif pt-24">
             About Sunset Forest Villa
           </h1>
           <p className="mt-6 text-lg md:text-xl font-light text-white/90 max-w-3xl mx-auto">
