@@ -5,15 +5,8 @@ import Image from "next/image";
 import SphereViewer from "@/components/PhotoSphereViewer";
 
 const roomImages = [
-  "/rooms/V1R1/1.webp",
-  "/rooms/V1R1/2.webp",
-  "/rooms/V1R1/3.webp",
-  "/rooms/V1R1/4.webp",
-  "/rooms/V1R1/5.webp",
-  "/rooms/V1R1/6.webp",
-  "/rooms/V1R1/7.webp",
-  "/rooms/V1R1/8.webp",
-  "/rooms/V1R1/9.webp",
+  "/rooms/HR1/1.webp",
+  "/rooms/HR1/2.webp"
 ];
 
 export default function SingleRoom() {
@@ -77,7 +70,7 @@ export default function SingleRoom() {
             <h2 className="text-3xl font-bold text-[#F7E9D7] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
               Explore the Room
             </h2>
-            <SphereViewer src="/rooms/V1/pano.jpg" />
+            <SphereViewer src="/rooms/HR1/pano.jpg" />
           </section>
 
           {/* Room Details */}

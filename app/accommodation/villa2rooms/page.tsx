@@ -5,15 +5,9 @@ import Image from "next/image";
 import SphereViewer from "@/components/PhotoSphereViewer";
 
 const roomImages = [
-  "/rooms/V1R1/1.webp",
-  "/rooms/V1R1/2.webp",
-  "/rooms/V1R1/3.webp",
-  "/rooms/V1R1/4.webp",
-  "/rooms/V1R1/5.webp",
-  "/rooms/V1R1/6.webp",
-  "/rooms/V1R1/7.webp",
-  "/rooms/V1R1/8.webp",
-  "/rooms/V1R1/9.webp",
+  "/rooms/V2/1.webp",
+  "/rooms/V2/2.webp",
+  "/rooms/V2/3.webp",
 ];
 
 export default function SingleRoom() {
@@ -28,7 +22,7 @@ export default function SingleRoom() {
       >
         <div className="absolute inset-0 bg-black/50" />
         <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-36">
-          Triple Room with Mountain View
+          Welcome to our Villa 2
         </h1>
       </section>
 
@@ -39,7 +33,7 @@ export default function SingleRoom() {
           {/* Image Gallery */}
           <section>
             <h2 className="text-3xl font-bold text-[#F7E9D7] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
-              Room Gallery
+              Villa Gallery
             </h2>
             <section className="relative h-[30vh] sm:h-[50vh] md:h-[70vh] w-full overflow-hidden">
             <Image
@@ -75,15 +69,15 @@ export default function SingleRoom() {
           {/* 360° Virtual Room Viewer */}
           <section>
             <h2 className="text-3xl font-bold text-[#F7E9D7] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
-              Explore the Room
+              Explore the Villa Kitchen and Pantry
             </h2>
-            <SphereViewer src="/rooms/V1/pano.jpg" />
+            <SphereViewer src="/rooms/V2/pano.jpg" />
           </section>
 
           {/* Room Details */}
           <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">
             <h2 className="text-3xl font-bold border-b-4 border-[#B8860B] inline-block pb-2">
-              Room Details
+              Villa Details
             </h2>
             <p className="text-lg leading-relaxed">
               Our cozy Single Room offers guests a perfect blend of comfort and traditional Kandyan aesthetics. Featuring a queen-sized bed, private balcony with stunning forest views, and modern amenities including air conditioning, Wi-Fi, and en-suite bathroom.

@@ -5,15 +5,14 @@ import Image from "next/image";
 import SphereViewer from "@/components/PhotoSphereViewer";
 
 const roomImages = [
-  "/rooms/V1R1/1.webp",
-  "/rooms/V1R1/2.webp",
-  "/rooms/V1R1/3.webp",
-  "/rooms/V1R1/4.webp",
-  "/rooms/V1R1/5.webp",
-  "/rooms/V1R1/6.webp",
-  "/rooms/V1R1/7.webp",
-  "/rooms/V1R1/8.webp",
-  "/rooms/V1R1/9.webp",
+  "/rooms/House/1.webp",
+  "/rooms/House/2.webp",
+  "/rooms/House/3.webp",
+  "/rooms/House/4.webp",
+  "/rooms/House/5.webp",
+  "/rooms/House/6.webp",
+  "/rooms/House/7.webp",
+  "/rooms/House/8.webp",
 ];
 
 export default function SingleRoom() {
@@ -28,7 +27,7 @@ export default function SingleRoom() {
       >
         <div className="absolute inset-0 bg-black/50" />
         <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-36">
-          Triple Room with Mountain View
+          Welcome to our Guest House
         </h1>
       </section>
 
@@ -73,12 +72,12 @@ export default function SingleRoom() {
           </section>
 
           {/* 360° Virtual Room Viewer */}
-          <section>
+          {/* <section>
             <h2 className="text-3xl font-bold text-[#F7E9D7] mb-8 border-b-4 border-[#B8860B] inline-block pb-2">
               Explore the Room
             </h2>
-            <SphereViewer src="/rooms/V1/pano.jpg" />
-          </section>
+            <SphereViewer src="/rooms/HR1/pano.jpg" />
+          </section> */}
 
           {/* Room Details */}
           <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">
