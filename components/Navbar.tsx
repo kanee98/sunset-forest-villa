@@ -18,7 +18,9 @@ export default function Navbar() {
   const [accommodationOpen, setAccommodationOpen] = useState(false);
   const [openVillaSubmenus, setOpenVillaSubmenus] = useState<{ [key: string]: boolean }>({});
 
-  const accommodationRoutes = ["/accommodation", "/single-room", "/double-room", "/family-suite"];
+  const accommodationRoutes = ["/accommodation/villa1rooms/doubleroom", "/accommodation/villa1rooms/tripleroom", "/accommodation/villa1rooms/familyroom", 
+                               "/accommodation/villa2rooms/doubleroom", "/accommodation/villa2rooms/tripleroom", "/accommodation/villa2rooms/familyroom",
+                              "/accommodation/houserooms/doubleroom", "/accommodation/houserooms/tripleroom", "/accommodation/houserooms/familyroom"];
   const isAccommodationActive = accommodationRoutes.includes(pathname);
 
   const isActive = (path: string) =>
