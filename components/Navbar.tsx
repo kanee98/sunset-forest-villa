@@ -34,7 +34,7 @@ export default function Navbar() {
       href: "/accommodation/villa1rooms",
       children: [
         { label: "Triple Room", href: "/accommodation/villa1rooms/tripleroom" },
-        { label: "Double Room", href: "/accommodation/villa1rooms/double-room" },
+        { label: "Family Room", href: "/accommodation/villa1rooms/familyroom" },
         { label: "Suite", href: "/accommodation/villa1rooms/suite" },
       ],
     },
