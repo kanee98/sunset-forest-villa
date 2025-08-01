@@ -57,7 +57,7 @@ export default function Hero() {
           Discover timeless comfort and elegant luxury at Sun Set Forest Villa.
         </p>
         <a
-          href="#book"
+          href="/book-now"
           className="inline-block mt-6 px-8 py-3 bg-white text-black font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition"
         >
           Book Your Stay

@@ -26,7 +26,7 @@ export default function BookingCTA() {
           Reconnect with nature, unwind in comfort, and make memories that last a lifetime.
         </p>
         <a
-          href="#"
+          href="/book-now"
           className="inline-block mt-8 px-10 py-4 bg-white text-[#3E2C24] font-semibold text-lg rounded-full shadow-lg hover:bg-[#f3e5dc] transition-all duration-300"
         >
           Reserve Your Escape

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
 
 export default function BookNowPage() {
   const [formData, setFormData] = useState({
@@ -12,13 +13,44 @@ export default function BookNowPage() {
     phone: "",
     checkIn: "",
     checkOut: "",
-    guests: 1,
+    guests: "",
+    roomType: "",
   });
+
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const today = new Date().toISOString().split("T")[0];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted", formData);
-    // TODO: Send to backend or external booking system
+    setStatus("loading");
+
+    const currentTime = new Date().toLocaleString();
+
+    const templateParams = {
+      ...formData,
+      time: currentTime,
+    };
+
+    emailjs
+      .send(
+        "service_bw2u5ze",
+        "template_f2n2y5q",
+        templateParams,
+        "K-S9YZeukjUULp3IR"
+      )
+      .then(() => {
+        setStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          checkIn: "",
+          checkOut: "",
+          guests: "",
+          roomType: "",
+        });
+      })
+      .catch(() => setStatus("error"));
   };
 
   return (
@@ -32,45 +64,138 @@ export default function BookNowPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-md">
-            Book your stay
-          </h1>
-          <p className="mt-4 text-lg md:text-xl font-light">
-            Your escape to luxury begins here.
-          </p>
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-md pt-24">Book your stay</h1>
+          <p className="mt-4 text-lg md:text-xl font-light">Your escape to luxury begins here.</p>
         </motion.div>
       </section>
 
       {/* Booking Form */}
       <section className="max-w-4xl mx-auto px-6 py-20">
-        <h2 className="text-3xl font-semibold mb-10 text-center">Plan Your Getaway</h2>
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-8 rounded-3xl shadow-xl">
-          <input type="text" placeholder="Full Name" required
-            className="border p-4 rounded-lg" 
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+        <h2 className="text-3xl font-semibold mb-10 text-center text-[#4B2E1D]">Plan Your Getaway</h2>
+        
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-8 rounded-3xl shadow-xl"
+        >
+          {/* Full Name */}
+          <div className="flex flex-col">
+            <label htmlFor="name" className="mb-1 text-sm font-medium text-[#4B2E1D]">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              required
+              placeholder="John Doe"
+              className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B]"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            />
+          </div>
 
-          <input type="email" placeholder="Email Address" required
-            className="border p-4 rounded-lg" 
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+          {/* Email */}
+          <div className="flex flex-col">
+            <label htmlFor="email" className="mb-1 text-sm font-medium text-[#4B2E1D]">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              required
+              placeholder="example@email.com"
+              className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B]"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
+          </div>
 
-          <input type="tel" placeholder="Phone Number" required
-            className="border p-4 rounded-lg" 
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
+          {/* Phone Number */}
+          <div className="flex flex-col">
+            <label htmlFor="phone" className="mb-1 text-sm font-medium text-[#4B2E1D]">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              required
+              placeholder="+1 234 567 890"
+              inputMode="tel"
+              className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B]"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            />
+          </div>
 
-          <input type="number" min="1" placeholder="No. of Guests"
-            className="border p-4 rounded-lg" 
-            onChange={(e) => setFormData({ ...formData, guests: Number(e.target.value) })} />
+          {/* Number of Guests */}
+          <div className="flex flex-col">
+            <label htmlFor="guests" className="mb-1 text-sm font-medium text-[#4B2E1D]">Number of Guests</label>
+            <input
+              type="number"
+              id="guests"
+              min="1"
+              required
+              placeholder="e.g. 2"
+              className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B]"
+              value={formData.guests}
+              onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
+            />
+          </div>
 
-          <input type="date" required
-            className="border p-4 rounded-lg"
-            onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })} />
+          {/* Check-In */}
+          <div className="flex flex-col">
+            <label htmlFor="checkIn" className="mb-1 text-sm font-medium text-[#4B2E1D]">Check-In Date</label>
+            <input
+              type="date"
+              id="checkIn"
+              required
+              min={today}
+              className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B]"
+              value={formData.checkIn}
+              onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
+            />
+          </div>
 
-          <input type="date" required
-            className="border p-4 rounded-lg"
-            onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })} />
+          {/* Check-Out */}
+          <div className="flex flex-col">
+            <label htmlFor="checkOut" className="mb-1 text-sm font-medium text-[#4B2E1D]">Check-Out Date</label>
+            <input
+              type="date"
+              id="checkOut"
+              required
+              min={formData.checkIn || today}
+              className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B]"
+              value={formData.checkOut}
+              onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
+            />
+          </div>
 
-          <div className="md:col-span-2 text-center">
-            <Button type="submit" className="bg-[#4B2E1D] text-white px-8 py-3 rounded-full hover:bg-[#3A2115] transition">Confirm Booking</Button>
+          {/* Room Type */}
+          <div className="flex flex-col md:col-span-2">
+            <label htmlFor="roomType" className="mb-1 text-sm font-medium text-[#4B2E1D]">Room Type</label>
+            <select
+              id="roomType"
+              required
+              className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B8860B]"
+              value={formData.roomType}
+              onChange={(e) => setFormData({ ...formData, roomType: e.target.value })}
+            >
+              <option value="">Select Room Option</option>
+              <option value="Deluxe Room">Deluxe Room</option>
+              <option value="Family Suite">Family Suite</option>
+              <option value="Standard Room">Standard Room</option>
+              <option value="Entire Villa">Entire Villa</option>
+            </select>
+          </div>
+
+          {/* Submit Button & Status */}
+          <div className="md:col-span-2 text-center mt-6">
+            <Button
+              type="submit"
+              className="bg-[#4B2E1D] text-white px-8 py-3 rounded-full hover:bg-[#3A2115] transition"
+            >
+              {status === "loading" ? "Sending..." : "Confirm Booking"}
+            </Button>
+
+            {status === "success" && (
+              <p className="mt-4 text-green-600">Booking request sent successfully!</p>
+            )}
+            {status === "error" && (
+              <p className="mt-4 text-red-600">Failed to send request. Please try again later.</p>
+            )}
           </div>
         </form>
       </section>
@@ -80,8 +205,9 @@ export default function BookNowPage() {
         <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div>
             <h3 className="text-2xl font-semibold mb-2">Need Help?</h3>
-            <p className="flex items-center justify-center md:justify-start gap-2"><Phone className="w-4" /> +94 71 234 5678</p>
-            <p className="flex items-center justify-center md:justify-start gap-2"><Mail className="w-4" /> info@sunsetforestvilla.com</p>
+            <p className="flex items-center justify-center md:justify-start gap-2"><Phone className="w-4" /> +94 77 997 8591</p>
+            <p className="flex items-center justify-center md:justify-start gap-2"><Phone className="w-4" /> +94 71 801 6538</p>
+            <p className="flex items-center justify-center md:justify-start gap-2"><Mail className="w-4" /> hello@sunsetforestvilla.lk</p>
           </div>
 
           <iframe
