@@ -14,7 +14,7 @@ import {
 
 const rooms = [
   {
-    title: "Forest View Suite",
+    title: "Sunset Vista Deluxe",
     price: "Rs. 6,500",
     img: "/rooms/V1R1/1.webp",
     description: "Wake up to serene views of the lush forest.",
@@ -26,7 +26,7 @@ const rooms = [
     description: "Unwind under a starry Kandyan sky.",
   },
   {
-    title: "Eco Bungalow",
+    title: "Villa Celestia",
     price: "Rs. 15,000",
     img: "/rooms/V2R1/1.webp",
     description: "Sustainable comfort surrounded by nature.",

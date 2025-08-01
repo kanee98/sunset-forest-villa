@@ -33,16 +33,16 @@ export default function Navbar() {
 
   const accommodationLinks = [
     {
-      label: "Villa 1",
+      label: "Villa Celestia",
       href: "/accommodation/villa1rooms",
       children: [
-        { label: "Double Room", href: "/accommodation/villa1rooms/doubleroom" },
-        { label: "Triple Room", href: "/accommodation/villa1rooms/tripleroom" },
-        { label: "Family Room", href: "/accommodation/villa1rooms/familyroom" },
+        { label: "Sunset Vista Deluxe", href: "/accommodation/villa1rooms/doubleroom" },
+        { label: "Horizon Retreat", href: "/accommodation/villa1rooms/tripleroom" },
+        { label: "Starlight Deluxe", href: "/accommodation/villa1rooms/familyroom" },
       ],
     },
     {
-      label: "Villa 2",
+      label: "Villa Elanora",
       href: "/accommodation/villa2rooms",
       children: [
         { label: "Double Room", href: "/accommodation/villa2rooms/doubleroom" },
@@ -51,7 +51,7 @@ export default function Navbar() {
       ],
     },
     {
-      label: "Guest House",
+      label: "The Canopy House",
       href: "/accommodation/houserooms",
       children: [
         { label: "Double Room", href: "/accommodation/houserooms/doubleroom" },

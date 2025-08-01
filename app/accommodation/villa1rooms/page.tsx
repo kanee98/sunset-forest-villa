@@ -3,6 +3,7 @@
 import {useState } from "react";
 import Image from "next/image";
 import SphereViewer from "@/components/PhotoSphereViewer";
+import Link from "next/link";
 
 const roomImages = [
   "/rooms/V1/1.webp",
@@ -24,7 +25,7 @@ export default function SingleRoom() {
       >
         <div className="absolute inset-0 bg-black/50" />
         <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-36">
-          Welcome to our Villa 1
+          Welcome to The Villa Celestia 
         </h1>
       </section>
 
@@ -76,25 +77,19 @@ export default function SingleRoom() {
             <SphereViewer src="/rooms/V1/pano.jpg" />
           </section>
 
-          {/* Room Details */}
+          {/* Villa Celestia */}
           <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">
             <h2 className="text-3xl font-bold border-b-4 border-[#B8860B] inline-block pb-2">
-              Villa Details
+              Villa Celestia
             </h2>
             <p className="text-lg leading-relaxed">
-              Our cozy Single Room offers guests a perfect blend of comfort and traditional Kandyan aesthetics. Featuring a queen-sized bed, private balcony with stunning forest views, and modern amenities including air conditioning, Wi-Fi, and en-suite bathroom.
+              Nestled amidst the trees, Villa Celestia offers a serene forest escape infused with celestial charm. Each of the three rooms is thoughtfully designed to blend soft natural textures with luxurious comfort. Whether you're gazing at the stars from your balcony or relaxing in air-conditioned tranquility, Celestia promises a rejuvenating retreat.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
-              <li>Queen-sized bed with premium linens</li>
-              <li>Private balcony overlooking the gardens</li>
-              <li>Complimentary high-speed Wi-Fi</li>
-              <li>Air conditioning and ceiling fan</li>
-              <li>En-suite bathroom with hot water</li>
-              <li>Tea & coffee making facilities</li>
-            </ul>
-            <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
-              Book Now
-            </button>
+            <Link href="/book-now">
+              <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
+                Book Now
+              </button>
+            </Link>
           </section>
         </main>
       </section>

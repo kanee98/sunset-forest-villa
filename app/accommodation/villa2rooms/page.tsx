@@ -22,7 +22,7 @@ export default function SingleRoom() {
       >
         <div className="absolute inset-0 bg-black/50" />
         <h1 className="relative text-white text-4xl md:text-6xl font-serif font-extrabold drop-shadow-lg max-w-4xl px-6 text-center pt-36">
-          Welcome to our Villa 2
+          Welcome to The Villa Elanora 
         </h1>
       </section>
 
