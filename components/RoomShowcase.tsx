@@ -16,19 +16,19 @@ const rooms = [
   {
     title: "Forest View Suite",
     price: "$199",
-    img: "/room1.jpg",
+    img: "/rooms/V1R1/1.jpg",
     description: "Wake up to serene views of the lush forest.",
   },
   {
     title: "Skyline Deluxe",
     price: "$249",
-    img: "/room2.jpg",
+    img: "/rooms/V1R2/1.webp",
     description: "Unwind under a starry Kandyan sky.",
   },
   {
     title: "Eco Bungalow",
     price: "$179",
-    img: "/room3.jpg",
+    img: "/rooms/V2R1/1.webp",
     description: "Sustainable comfort surrounded by nature.",
   },
 ];

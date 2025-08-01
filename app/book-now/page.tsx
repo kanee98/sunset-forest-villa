@@ -219,6 +219,50 @@ export default function BookNowPage() {
           />
         </div>
       </section>
+      {/* Booking FAQ */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="text-3xl font-semibold text-center mb-10 text-[#4B2E1D]">Frequently Asked Questions</h2>
+          
+          <div className="space-y-6">
+            {/* FAQ Item */}
+            <details className="border rounded-lg p-4 group open:shadow-md transition">
+              <summary className="font-medium text-[#4B2E1D] cursor-pointer group-open:text-[#B8860B]">
+                What is the check-in and check-out time?
+              </summary>
+              <p className="mt-2 text-gray-700">Check-in is from 2:00 PM and check-out is by 11:00 AM.</p>
+            </details>
+
+            <details className="border rounded-lg p-4 group open:shadow-md transition">
+              <summary className="font-medium text-[#4B2E1D] cursor-pointer group-open:text-[#B8860B]">
+                Can I cancel or modify my booking?
+              </summary>
+              <p className="mt-2 text-gray-700">Yes, bookings can be modified or canceled up to 48 hours before check-in without a fee.</p>
+            </details>
+
+            <details className="border rounded-lg p-4 group open:shadow-md transition">
+              <summary className="font-medium text-[#4B2E1D] cursor-pointer group-open:text-[#B8860B]">
+                Is breakfast included in the room price?
+              </summary>
+              <p className="mt-2 text-gray-700">Yes, breakfast is included for all room types unless specified otherwise.</p>
+            </details>
+
+            <details className="border rounded-lg p-4 group open:shadow-md transition">
+              <summary className="font-medium text-[#4B2E1D] cursor-pointer group-open:text-[#B8860B]">
+                Do you offer airport pickup?
+              </summary>
+              <p className="mt-2 text-gray-700">We do! Airport pickup can be arranged upon request at an additional cost.</p>
+            </details>
+
+            <details className="border rounded-lg p-4 group open:shadow-md transition">
+              <summary className="font-medium text-[#4B2E1D] cursor-pointer group-open:text-[#B8860B]">
+                Can I book the entire villa for private events?
+              </summary>
+              <p className="mt-2 text-gray-700">Absolutely. Select "Entire Villa" when booking or contact us directly for custom packages.</p>
+            </details>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
