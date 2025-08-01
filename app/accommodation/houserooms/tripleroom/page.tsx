@@ -89,12 +89,11 @@ export default function SingleRoom() {
               <li>Access to shared kitchen</li>
               <li>Ceiling fan for cooling</li>
             </ul>
-            <a
-              href="/book-now"
-              className="mt-6 inline-block bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition"
-            >
-              Book Now
-            </a>
+            <Link href="/book-now">
+              <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
+                Book Now
+              </button>
+            </Link>
           </section>
 
         </main>

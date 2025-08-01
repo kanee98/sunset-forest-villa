@@ -83,7 +83,7 @@ export default function SingleRoom() {
               Villa Celestia
             </h2>
             <p className="text-lg leading-relaxed">
-              Nestled amidst the trees, Villa Celestia offers a serene forest escape infused with celestial charm. Each of the three rooms is thoughtfully designed to blend soft natural textures with luxurious comfort. Whether you're gazing at the stars from your balcony or relaxing in air-conditioned tranquility, Celestia promises a rejuvenating retreat.
+              Nestled amidst the trees, Villa Celestia offers a serene forest escape infused with celestial charm. Each of the three rooms is thoughtfully designed to blend soft natural textures with luxurious comfort. Whether you&apos;re gazing at the stars from your balcony or relaxing in air-conditioned tranquility, Celestia promises a rejuvenating retreat.
             </p>
             <Link href="/book-now">
               <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
