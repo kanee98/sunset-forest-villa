@@ -36,18 +36,18 @@ export default function Navbar() {
       label: "Villa Celestia",
       href: "/accommodation/villa1rooms",
       children: [
-        { label: "Sunset Vista Deluxe", href: "/accommodation/villa1rooms/doubleroom" },
-        { label: "Horizon Retreat", href: "/accommodation/villa1rooms/tripleroom" },
-        { label: "Starlight Deluxe", href: "/accommodation/villa1rooms/familyroom" },
+        { label: "Double Room - Sunset Vista Deluxe", href: "/accommodation/villa1rooms/doubleroom" },
+        { label: "Triple Room - Horizon Retreat", href: "/accommodation/villa1rooms/tripleroom" },
+        { label: "Family Room - Starlight Deluxe", href: "/accommodation/villa1rooms/familyroom" },
       ],
     },
     {
       label: "Villa Elanora",
       href: "/accommodation/villa2rooms",
       children: [
-        { label: "Double Room", href: "/accommodation/villa2rooms/doubleroom" },
-        { label: "Triple Room", href: "/accommodation/villa2rooms/tripleroom" },
-        { label: "Family Room", href: "/accommodation/villa2rooms/familyroom" },
+        { label: "Double Room - Fern Grove Retreat", href: "/accommodation/villa2rooms/doubleroom" },
+        { label: "Triple Room - Canopy View Deluxe", href: "/accommodation/villa2rooms/tripleroom" },
+        { label: "Family Room - Woodland Deluxe", href: "/accommodation/villa2rooms/familyroom" },
       ],
     },
     {

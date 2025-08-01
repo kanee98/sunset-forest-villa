@@ -3,6 +3,7 @@
 import {useState } from "react";
 import Image from "next/image";
 import SphereViewer from "@/components/PhotoSphereViewer";
+import Link from "next/link";
 
 const roomImages = [
   "/rooms/V2/1.webp",
@@ -74,25 +75,19 @@ export default function SingleRoom() {
             <SphereViewer src="/rooms/V2/pano.jpg" />
           </section>
 
-          {/* Room Details */}
+           {/* Villa Elanora */}
           <section className="max-w-4xl mx-auto text-[#F7E9D7] space-y-6">
             <h2 className="text-3xl font-bold border-b-4 border-[#B8860B] inline-block pb-2">
-              Villa Details
+              Villa Elanora
             </h2>
             <p className="text-lg leading-relaxed">
-              Our cozy Single Room offers guests a perfect blend of comfort and traditional Kandyan aesthetics. Featuring a queen-sized bed, private balcony with stunning forest views, and modern amenities including air conditioning, Wi-Fi, and en-suite bathroom.
+              A sanctuary of calm and rustic elegance, Villa Elanora brings together earthy design, forest views, and warm hospitality. Each of its three unique rooms embraces natural textures and comfort, offering guests a memorable stay surrounded by tranquility.
             </p>
-            <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
-              <li>Queen-sized bed with premium linens</li>
-              <li>Private balcony overlooking the gardens</li>
-              <li>Complimentary high-speed Wi-Fi</li>
-              <li>Air conditioning and ceiling fan</li>
-              <li>En-suite bathroom with hot water</li>
-              <li>Tea & coffee making facilities</li>
-            </ul>
-            <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
-              Book Now
-            </button>
+            <Link href="/book-now">
+              <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
+                Book Now
+              </button>
+            </Link>
           </section>
         </main>
       </section>
