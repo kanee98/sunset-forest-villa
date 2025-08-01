@@ -78,10 +78,12 @@ export default function TestimonialCarousel() {
   });
 
   useEffect(() => {
+    const slider = instanceRef.current;
     const timer = setInterval(() => {
-      instanceRef.current?.next();
+      slider?.next();
     }, 5000);
     return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -258,7 +258,7 @@ export default function BookNowPage() {
               <summary className="font-medium text-[#4B2E1D] cursor-pointer group-open:text-[#B8860B]">
                 Can I book the entire villa for private events?
               </summary>
-              <p className="mt-2 text-gray-700">Absolutely. Select "Entire Villa" when booking or contact us directly for custom packages.</p>
+              <p className="mt-2 text-gray-700">Absolutely. Select &quot;Entire Villa&quot; when booking or contact us directly for custom packages.</p>
             </details>
           </div>
         </div>

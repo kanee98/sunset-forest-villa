@@ -2,7 +2,7 @@
 
 import {useState } from "react";
 import Image from "next/image";
-import SphereViewer from "@/components/PhotoSphereViewer";
+// import SphereViewer from "@/components/PhotoSphereViewer";
 
 const roomImages = [
   "/rooms/House/1.webp",

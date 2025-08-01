@@ -16,7 +16,7 @@ const rooms = [
   {
     title: "Forest View Suite",
     price: "$199",
-    img: "/rooms/V1R1/1.jpg",
+    img: "/rooms/V1R1/1.webp",
     description: "Wake up to serene views of the lush forest.",
   },
   {

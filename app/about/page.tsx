@@ -64,7 +64,7 @@ export default function AboutPage() {
               transition={{ duration: 1 }}
             >
               <Image
-                src="/bg2.jpg"
+                src="/bg/bg2.jpg"
                 alt="About Our Story"
                 width={600}
                 height={400}
@@ -116,7 +116,7 @@ export default function AboutPage() {
                   I’m the proprietor of Sunset Forest Villa, and I welcome you to our humble sanctuary. This villa is a reflection of my love for nature, peace, and authentic hospitality. Every detail from the rooms to the garden has been designed with care to give you a memorable stay.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  Whether you're exploring Kandy's cultural treasures or simply relaxing with a cup of tea while watching the sunset, this place is meant to feel like your home away from home.
+                  Whether you&apos;re exploring Kandy&apos;s cultural treasures or simply relaxing with a cup of tea while watching the sunset, this place is meant to feel like your home away from home.
                 </p>
                 <p className="text-lg leading-relaxed italic font-semibold">
                   I look forward to hosting you and making your stay truly special.<br />
