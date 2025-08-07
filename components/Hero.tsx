@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const backgroundImages = ["/bg/bg.jpg", "/bg/bg2.jpg", "/bg/bg3.jpg"];
+const backgroundImages = ["/bg/bg.webp", "/bg/bg2.jpg", "/bg/bg3.jpg"];
 const slideInterval = 5000;
 
 export default function Hero() {

@@ -90,7 +90,7 @@ export default function ExplorePage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
           <img
-            src="/bg/bg.jpg"
+            src="/bg/bg.webp"
             alt="Background"
             className="w-full h-full object-cover"
           />
