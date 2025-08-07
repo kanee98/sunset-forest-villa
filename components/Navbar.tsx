@@ -25,7 +25,7 @@ export default function Navbar() {
                                "/accommodation/villa1rooms", "/accommodation/villa2rooms", "/accommodation/houserooms"];
   const isAccommodationActive = accommodationRoutes.includes(pathname);
 
-  const aboutRoutes = ["/about/about", "/about/testimonials"];
+  const aboutRoutes = ["/about/about", "/about/testimonials", "/about/gallery"];
   const isAboutActive = aboutRoutes.includes(pathname);
 
   const isActive = (path: string) =>
@@ -109,7 +109,7 @@ export default function Navbar() {
                 <li><div className="relative group">
                     <button
                       className={`flex items-center space-x-1 transition ${
-                        isAccommodationActive ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]"
+                        isAboutActive ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]"
                       }`}
                     >
                       <span>About</span>
@@ -224,7 +224,7 @@ export default function Navbar() {
             <div className="relative group">
               <button
                 className={`flex items-center space-x-1 transition ${
-                  isAccommodationActive ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]"
+                  isAboutActive ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]"
                 }`}
               >
                 <span>About</span>
