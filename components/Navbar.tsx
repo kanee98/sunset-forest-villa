@@ -16,6 +16,7 @@ export default function Navbar() {
   const { scrolled, isCompactView } = useNavbarState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [accommodationOpen, setAccommodationOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [openVillaSubmenus, setOpenVillaSubmenus] = useState<{ [key: string]: boolean }>({});
 
   const accommodationRoutes = ["/accommodation/villa1rooms/doubleroom", "/accommodation/villa1rooms/tripleroom", "/accommodation/villa1rooms/familyroom", 
@@ -23,6 +24,9 @@ export default function Navbar() {
                                "/accommodation/houserooms/doubleroom", "/accommodation/houserooms/tripleroom", "/accommodation/houserooms/familyroom",
                                "/accommodation/villa1rooms", "/accommodation/villa2rooms", "/accommodation/houserooms"];
   const isAccommodationActive = accommodationRoutes.includes(pathname);
+
+  const aboutRoutes = ["/about/about", "/about/testimonials"];
+  const isAboutActive = aboutRoutes.includes(pathname);
 
   const isActive = (path: string) =>
     pathname === path ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]";
@@ -61,6 +65,21 @@ export default function Navbar() {
     },
   ];
 
+  const aboutLinks = [
+    {
+      label: "Who we are",
+      href: "/about/about"
+    },
+    {
+      label: "Our Testimonials",
+      href: "/about/testimonials"
+    },
+    {
+      label: "Our Gallery",
+      href: "/about/gallery"
+    }
+  ]
+
   return (
     <>
       {/* Large screen hero nav */}
@@ -87,7 +106,35 @@ export default function Navbar() {
             <nav>
               <ul className="flex space-x-8 text-[#5C3A25] font-medium text-xl">
                 <li><Link href="/" className={`transition ${isActive("/")}`}>Home</Link></li>
-                <li><Link href="/about" className={`transition ${isActive("/about")}`}>About Us</Link></li>
+                <li><div className="relative group">
+                    <button
+                      className={`flex items-center space-x-1 transition ${
+                        isAccommodationActive ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]"
+                      }`}
+                    >
+                      <span>About</span>
+                      <ChevronDown size={16} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
+                    </button>
+                    <ul className="absolute top-full text-left left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
+                      {aboutLinks.map((item) => (
+                        <li key={item.href} className="relative group/item">
+                          <Link
+                            href={item.href}
+                            className={`block px-4 py-2 rounded-md transition-colors ${
+                              pathname === item.href
+                                ? "bg-[#C09728] text-white font-semibold"
+                                : "hover:bg-[#C09728] text-white"
+                            }`}
+                          >
+                            <div className="flex justify-between items-center">
+                              <span>{item.label}</span>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
                 <li>
                   <div className="relative group">
                     <button
@@ -141,6 +188,14 @@ export default function Navbar() {
                   </div>
                 </li>
                 <li><Link href="/contact" className={`transition ${isActive("/contact")}`}>Contact Us</Link></li>
+                <li>
+                  <Link
+                    href="/book-now"
+                    className="ml-6 px-5 py-2 bg-[#D4AF37] text-black font-semibold rounded-full hover:bg-[#f8d564ff] transition"
+                  >
+                    Book Now
+                  </Link>
+                </li>
               </ul>
             </nav>
           </motion.div>
@@ -166,7 +221,34 @@ export default function Navbar() {
             scrolled || isCompactView ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}>
             <Link href="/" className={`transition ${isActive("/")}`}>Home</Link>
-            <Link href="/about" className={`transition ${isActive("/about")}`}>About Us</Link>
+            <div className="relative group">
+              <button
+                className={`flex items-center space-x-1 transition ${
+                  isAccommodationActive ? "text-[#D4AF37] font-bold" : "text-white hover:text-[#D4AF37]"
+                }`}
+              >
+                <span>About</span>
+                <ChevronDown size={16} className="mt-0.5 group-hover:rotate-180 transition-transform duration-300" />
+              </button>
+              <ul className="absolute top-full text-left left-0 mt-2 w-56 bg-[#B8860B] border border-[#5C3A25] shadow-2xl opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform -translate-y-2 transition-all duration-300 z-50 p-2 divide-y divide-[#5C3A25]">
+                {aboutLinks.map((item) => (
+                  <li key={item.href} className="relative group/item">
+                    <Link
+                      href={item.href}
+                      className={`block px-4 py-2 rounded-md transition-colors ${
+                        pathname === item.href
+                          ? "bg-[#C09728] text-white font-semibold"
+                          : "hover:bg-[#C09728] text-white"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <span>{item.label}</span>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="relative group">
               <button
                 className={`flex items-center space-x-1 transition ${
@@ -264,7 +346,34 @@ export default function Navbar() {
 
               <ul className="flex flex-col space-y-5 text-lg font-medium">
                 <li><Link href="/" onClick={() => setMobileMenuOpen(false)} className={`block ${isActive("/")}`}>Home</Link></li>
-                <li><Link href="/about" onClick={() => setMobileMenuOpen(false)} className={`block ${isActive("/about")}`}>About Us</Link></li>
+                <li>
+                  <button
+                    onClick={() => setAboutOpen(!aboutOpen)}
+                    className={`flex items-center justify-between w-full ${isAboutActive ? "text-[#D4AF37] font-bold" : "text-white"}`}
+                  >
+                    <span>About</span>
+                    {aboutOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                  </button>
+                  {aboutOpen && (
+                    <ul className="mt-3 ml-4 flex flex-col space-y-3 text-[#d4af37]">
+                      {aboutLinks.map((item) => (
+                        <li key={item.href}>
+                          <div className="flex items-center justify-between">
+                            <Link
+                              href={item.href}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className={`block px-3 py-2 rounded w-full ${
+                                pathname === item.href ? "bg-[#2a2a2a] font-semibold text-white" : "hover:bg-[#2a2a2a]"
+                              }`}
+                            >
+                              {item.label}
+                            </Link>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
 
                 <li>
                   <button
