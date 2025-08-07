@@ -65,12 +65,10 @@ export default function ExplorePage() {
     }
   };
 
-  // Lock scroll when modals are open
   useEffect(() => {
     document.body.style.overflow = showChoices || showFollowUpChoices ? "hidden" : "";
   }, [showChoices, showFollowUpChoices]);
 
-  // Show follow-up modal when second video ends
   useEffect(() => {
     const video = choiceVideoRef.current;
     if (!video) return;
@@ -86,31 +84,35 @@ export default function ExplorePage() {
   }, [selectedMainChoice, nextVideoSrc]);
 
   return (
-    <div className="relative w-screen h-screen bg-black text-white overflow-hidden">
-      {/* Background Poster Image */}
+    <div className="relative w-full h-screen bg-black text-white overflow-hidden">
+      {/* Poster background before start */}
       {!started && (
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-          <video className="w-full h-full object-cover" poster="/bg/bg.jpg" muted playsInline />
+          <img
+            src="/bg/bg.jpg"
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
         </div>
       )}
 
-      {/* Intro Video with scroll control */}
+      {/* Intro video */}
       {started && !nextVideoSrc && (
         <VideoPlayer
           src="/videos/explore.mp4"
           onEnded={handleIntroEnd}
-          className="absolute inset-0 transition-opacity duration-700 opacity-100"
+          className="absolute top-0 left-0 w-full h-full transition-opacity duration-700 opacity-100 z-10"
           muted
           playsInline
-          scrollControl={true}
+          scrollControl
           ref={introVideoRef}
         />
       )}
 
       {/* Explore Button */}
       {!started && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-3xl md:text-5xl font-serif font-extrabold mb-6 drop-shadow-lg">
             Discover Unique Escapes in Nature
           </h1>
@@ -120,6 +122,7 @@ export default function ExplorePage() {
           </p>
           <button
             onClick={handleExploreClick}
+            aria-label="Start explore journey"
             className="w-20 h-20 rounded-full bg-white/90 text-black backdrop-blur-md shadow-xl group hover:scale-105 transition-all duration-300 relative"
           >
             <div className="absolute left-[38%] top-[30%] w-0 h-0 border-t-[16px] border-b-[16px] border-l-[24px] border-t-transparent border-b-transparent border-l-black group-hover:scale-110 transition-transform duration-300" />
@@ -131,7 +134,6 @@ export default function ExplorePage() {
       {showChoices && (
         <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-md p-6">
           <div className="relative bg-white text-black rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-6 text-center">
-            {/* Close Button */}
             <button
               onClick={handleCloseModal}
               aria-label="Close modal"
@@ -139,7 +141,6 @@ export default function ExplorePage() {
             >
               &times;
             </button>
-
             <h2 className="text-2xl font-bold">What experience would you like to explore?</h2>
             <div className="space-y-4">
               <button
@@ -159,11 +160,10 @@ export default function ExplorePage() {
         </div>
       )}
 
-      {/* Follow-Up Modal */}
+      {/* Follow-Up Modal - Villa */}
       {showFollowUpChoices && selectedMainChoice === "villa" && (
         <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-md p-6">
           <div className="relative bg-white text-black rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-4 text-center">
-            {/* Close Button */}
             <button
               onClick={handleCloseModal}
               aria-label="Close modal"
@@ -171,7 +171,6 @@ export default function ExplorePage() {
             >
               &times;
             </button>
-
             <h2 className="text-2xl font-bold">Which villa would you like to explore?</h2>
             <button
               onClick={() => handleFollowUp("villa1")}
@@ -195,10 +194,10 @@ export default function ExplorePage() {
         </div>
       )}
 
+      {/* Follow-Up Modal - House */}
       {showFollowUpChoices && selectedMainChoice === "house" && (
         <div className="fixed inset-0 z-30 flex items-center justify-center bg-black/70 backdrop-blur-md p-6">
           <div className="relative bg-white text-black rounded-2xl p-8 max-w-md w-full shadow-2xl space-y-4 text-center">
-            {/* Close Button */}
             <button
               onClick={handleCloseModal}
               aria-label="Close modal"
@@ -206,7 +205,6 @@ export default function ExplorePage() {
             >
               &times;
             </button>
-
             <h2 className="text-2xl font-bold">Ready to explore?</h2>
             <button
               onClick={() => handleFollowUp("houserooms")}
@@ -224,15 +222,15 @@ export default function ExplorePage() {
         </div>
       )}
 
-      {/* Second Video */}
+      {/* Choice Video */}
       {nextVideoSrc && (
         <VideoPlayer
           src={nextVideoSrc}
-          className="absolute inset-0 w-full h-full object-cover z-20"
+          className="absolute top-0 left-0 w-full h-full object-cover z-20"
           autoPlay
           controls
           playsInline
-          scrollControl={true}
+          scrollControl
           ref={choiceVideoRef}
         />
       )}
