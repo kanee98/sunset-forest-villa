@@ -67,22 +67,53 @@ export default function Hero() {
 
       {/* Social Icons */}
       <motion.div
-        className="hidden md:flex flex-col gap-6 z-20"
+        className="hidden md:flex flex-col gap-6 z-20 bg-white/20 backdrop-blur-md rounded-xl p-6 shadow-lg"
         initial={{ x: 30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
       >
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebookF className="text-white hover:text-blue-400 text-2xl transition duration-300" />
+        {/* Facebook */}
+        <a href="https://web.facebook.com/sunsetforestvillakandy/?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer">
+          <Image
+            src="/icons/facebook.svg"
+            alt="Facebook"
+            width={28}
+            height={28}
+            className="hover:opacity-70 transition-opacity"
+          />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="text-white hover:text-pink-400 text-2xl transition duration-300" />
+
+        {/* Booking.com */}
+        <a href="https://www.booking.com/hotel/lk/sun-set-forrest-villa-kandy.en-gb.html" target="_blank" rel="noopener noreferrer">
+          <Image
+            src="/icons/booking.svg"
+            alt="Booking.com"
+            width={28}
+            height={28}
+            className="hover:opacity-70 transition-opacity"
+          />
         </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter className="text-white hover:text-cyan-400 text-2xl transition duration-300" />
+
+        {/* Agoda */}
+        <a href="https://www.agoda.com/en-ie/sun-set-forest-villa-h30956746/hotel/kandy-lk.html?cid=1844104" target="_blank" rel="noopener noreferrer">
+          <Image
+            src="/icons/agoda.svg"
+            alt="Agoda"
+            width={28}
+            height={28}
+            className="hover:opacity-70 transition-opacity"
+          />
         </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-          <FaLinkedinIn className="text-white hover:text-blue-300 text-2xl transition duration-300" />
+
+        {/* Tripadvisor */}
+        <a href="https://www.tripadvisor.com/Hotel_Review-g304138-d15221641-Reviews-Sunset_Forest_Villa-Kandy_Kandy_District_Central_Province.html" target="_blank" rel="noopener noreferrer">
+          <Image
+            src="/icons/tripadvisor.svg"
+            alt="Tripadvisor"
+            width={28}
+            height={28}
+            className="hover:opacity-70 transition-opacity"
+          />
         </a>
       </motion.div>
     </section>
