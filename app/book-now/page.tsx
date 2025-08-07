@@ -20,8 +20,14 @@ export default function BookNowPage() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const today = new Date().toISOString().split("T")[0];
 
+  const [showModal, setShowModal] = useState(false);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setShowModal(true);
+  };
+
+  const handleFinalSubmit = () => {
     setStatus("loading");
 
     const currentTime = new Date().toLocaleString();
@@ -50,7 +56,10 @@ export default function BookNowPage() {
           roomType: "",
         });
       })
-      .catch(() => setStatus("error"));
+      .catch(() => setStatus("error"))
+      .finally(() => {
+        setShowModal(false);
+      });
   };
 
   return (
@@ -263,6 +272,48 @@ export default function BookNowPage() {
           </div>
         </div>
       </section>
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-xl p-6 max-w-lg w-full shadow-lg text-[#4B2E1D]">
+            <h3 className="text-xl font-bold mb-4">Confirm Your Booking</h3>
+
+            <div className="space-y-2 text-sm">
+              <p><strong>Name:</strong> {formData.name}</p>
+              <p><strong>Email:</strong> {formData.email}</p>
+              <p><strong>Phone:</strong> {formData.phone}</p>
+              <p><strong>Check-In:</strong> {formData.checkIn}</p>
+              <p><strong>Check-Out:</strong> {formData.checkOut}</p>
+              <p><strong>Guests:</strong> {formData.guests}</p>
+              <p><strong>Room Type:</strong> {formData.roomType}</p>
+            </div>
+
+            <div className="mt-6 text-sm bg-yellow-100 border border-yellow-300 p-3 rounded">
+              <ul className="list-disc pl-5 space-y-1">
+                <li>Free cancellation only before 48 hours of check-in.</li>
+                <li>Booking is confirmed only after an official email from the hotel.</li>
+                <li>Please <strong>do not make any payments</strong> before confirmation.</li>
+              </ul>
+            </div>
+
+            <div className="mt-6 flex justify-end space-x-4">
+              <Button
+                type="button"
+                className="bg-gray-300 text-black hover:bg-gray-400"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="button"
+                className="bg-[#4B2E1D] text-white hover:bg-[#3A2115]"
+                onClick={handleFinalSubmit}
+              >
+                Confirm & Send
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
