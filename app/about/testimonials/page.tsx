@@ -79,7 +79,7 @@ export default function TestimonialsPage() {
                   height={80}
                   className="rounded-full mx-auto mb-4"
                 />
-                <p className="text-[#4B2E1D] italic mb-3">"{testimonial.message}"</p>
+                <p className="text-[#4B2E1D] italic mb-3">&quot;{testimonial.message}&quot;</p>
                 <p className="text-[#B8860B] font-bold">{testimonial.name}</p>
               </motion.div>
             ))}

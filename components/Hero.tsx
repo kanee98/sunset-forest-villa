@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const backgroundImages = ["/bg/bg.jpg", "/bg/bg2.jpg", "/bg/bg3.jpg"];
 const slideInterval = 5000;
