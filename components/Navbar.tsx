@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronUp, ChevronDown, ChevronRight } from "lucide-react"; // added ChevronRight
+import { Menu, X, ChevronUp, ChevronDown, ChevronRight } from "lucide-react";
 import KandyanDivider from "./KandyanDivider";
 import useNavbarState from "@/hooks/useNavbarState";
 import { Dancing_Script } from "next/font/google";
@@ -90,6 +90,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.5 }}
             className="fixed top-6 left-1/2 -translate-x-1/2 z-40 hidden xl:flex flex-col items-center space-y-4 px-6 text-center max-w-screen-xl"
+            style={{ opacity: 1, transform: 'none', width: '100%' }}
           >
             <div className="flex flex-col items-center gap-1 text-center">
               <h1 className={`${dancingScript.className} text-7xl font-semibold tracking-wide drop-shadow-xl text-[#B8860B] px-4`}>
@@ -187,6 +188,8 @@ export default function Navbar() {
                     </ul>
                   </div>
                 </li>
+                <li><Link href="/packages" className={`transition ${isActive("/packages")}`}>Our Packages</Link></li>
+                <li><Link href="/tours" className={`transition ${isActive("/tours")}`}>Travels & Tours</Link></li>
                 <li><Link href="/contact" className={`transition ${isActive("/contact")}`}>Contact Us</Link></li>
                 <li>
                   <Link
@@ -299,6 +302,8 @@ export default function Navbar() {
                 ))}
               </ul>
             </div>
+            <Link href="/packages" className={`transition ${isActive("/packages")}`}>Our Packages</Link>
+            <Link href="/tours" className={`transition ${isActive("/tours")}`}>Travels & Tours</Link>
             <Link href="/contact" className={`transition ${isActive("/contact")}`}>Contact Us</Link>
             <Link
               href="/book-now"
@@ -436,7 +441,8 @@ export default function Navbar() {
                     </ul>
                   )}
                 </li>
-
+                <li><Link href="/packages" className={`transition ${isActive("/packages")}`}>Our Packages</Link></li>
+                <li><Link href="/tours" className={`transition ${isActive("/tours")}`}>Travels & Tours</Link></li>
                 <li><Link href="/contact" onClick={() => setMobileMenuOpen(false)} className={`block ${isActive("/contact")}`}>Contact</Link></li>
               </ul>
 
