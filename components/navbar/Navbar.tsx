@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronUp, ChevronDown, ChevronRight } from "lucide-react";
-import KandyanDivider from "./KandyanDivider";
+import KandyanDivider from "../KandyanDivider";
 import useNavbarState from "@/hooks/useNavbarState";
 import { Dancing_Script } from "next/font/google";
 

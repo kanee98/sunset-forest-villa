@@ -101,7 +101,7 @@ export default function ExplorePage() {
         </div>
       )}
       {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
       {/* Intro video */}
       {started && !nextVideoSrc && (
