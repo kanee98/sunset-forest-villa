@@ -5,6 +5,7 @@ type VideoLike =
   | {
       playVideo: () => void;
       pauseVideo: () => void;
+      getIframe?: () => HTMLElement;  // added getIframe method optional
     }
   | null;
 
@@ -46,8 +47,19 @@ export function useVideoScrollControl(
     );
 
     if ("tagName" in video && video.tagName === "VIDEO") {
+      // Native video element
       observer.observe(video);
+    } else if (
+      videoRef.current &&
+      typeof (videoRef.current as any).getIframe === "function"
+    ) {
+      // YouTube player - observe iframe element
+      const iframe = (videoRef.current as any).getIframe();
+      if (iframe instanceof HTMLElement) {
+        observer.observe(iframe);
+      }
     } else if (videoRef.current instanceof HTMLElement) {
+      // fallback for other DOM elements
       observer.observe(videoRef.current);
     }
 
