@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayer";
+import Image from "next/image";
 
 export default function ExplorePage() {
   const router = useRouter();
@@ -89,13 +90,18 @@ export default function ExplorePage() {
       {!started && (
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-          <img
-            src="/bg/bg.webp"
-            alt="Background"
-            className="w-full h-full object-cover"
+          <Image
+            src="/bg.jpg"
+            alt="Sunset Forest Villa"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
           />
         </div>
       )}
+      {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
       {/* Intro video */}
       {started && !nextVideoSrc && (

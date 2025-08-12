@@ -20,19 +20,19 @@ export default function FollowUpModal({ open, mainChoice, onSelect }: Props) {
             onClick={() => onSelect("villa1")}
             className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
           >
-            Villa 1
+            Villa Celestia
           </button>
           <button
             onClick={() => onSelect("villa2")}
             className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
           >
-            Villa 2
+            Villa Ellanora
           </button>
           <button
             onClick={() => onSelect("houseVideo")}
             className="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg transition mt-2"
           >
-            Actually... Show Me the House
+            Actually... Show Me The Canopy House
           </button>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default function FollowUpModal({ open, mainChoice, onSelect }: Props) {
             onClick={() => onSelect("houserooms")}
             className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-lg transition"
           >
-            Explore the House
+            Explore The Canopy House
           </button>
           <button
             onClick={() => onSelect("villaVideo")}

@@ -20,7 +20,7 @@ const tours = [
       "Tea Museum",
     ],
     image:
-      "/bg.jpg",
+      "/tours/city.jpg",
   },
   {
     title: "Airport Pickup & Drop",
@@ -33,7 +33,7 @@ const tours = [
       "Direct route to Sunset Forest Villa",
     ],
     image:
-      "/bg.jpg",
+      "/tours/airport.jpg",
   },
   {
     title: "Vehicle with Driver",
@@ -45,19 +45,19 @@ const tours = [
       "Flexible scheduling",
     ],
     image:
-      "/bg.jpg",
+      "/tours/vehicle.jpg",
   },
   {
     title: "Bike Rentals",
     description:
       "Enjoy the surrounding landscapes and Kandy city at your own pace with our bike rental services.",
     features: [
-      "Mountain bikes available",
+      "Motor bikes available",
       "Safety gear included",
       "Affordable hourly/daily rates",
     ],
     image:
-      "/bg.jpg",
+      "/tours/bike.jpg",
   },
 ];
 
