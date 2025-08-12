@@ -2,43 +2,42 @@
 
 declare global {
   interface Window {
-    YT?: typeof YT;
+    YT?: {
+      Player: {
+        new (elementId: string, options: PlayerOptions): Player;
+      };
+    };
     onYouTubeIframeAPIReady: () => void;
   }
 }
 
 import { useEffect, useRef } from "react";
-import { useVideoScrollControl } from "@/hooks/useVideoScrollControl";
 
-declare namespace YT {
-  class Player {
-    constructor(elementId: string, options: PlayerOptions);
-    mute(): void;
-    playVideo(): void;
-    pauseVideo(): void;
-    destroy(): void;
-  }
-
-  interface PlayerOptions {
-    videoId: string;
-    playerVars?: Record<string, number | string>;
-    events?: {
-      onReady?: (event: PlayerEvent) => void;
-      onStateChange?: (event: PlayerStateEvent) => void;
-    };
-  }
-
-  interface PlayerEvent {
-    target: Player;
-  }
-
-  interface PlayerStateEvent {
-    data: number;
-    target: Player;
-  }
+interface Player {
+  mute(): void;
+  playVideo(): void;
+  pauseVideo(): void;
+  destroy(): void;
 }
 
-// Instead of const enum, define as const object:
+interface PlayerOptions {
+  videoId: string;
+  playerVars?: Record<string, number | string>;
+  events?: {
+    onReady?: (event: PlayerEvent) => void;
+    onStateChange?: (event: PlayerStateEvent) => void;
+  };
+}
+
+interface PlayerEvent {
+  target: Player;
+}
+
+interface PlayerStateEvent {
+  data: number;
+  target: Player;
+}
+
 export const PlayerState = {
   UNSTARTED: -1,
   ENDED: 0,
@@ -51,10 +50,8 @@ export const PlayerState = {
 type PlayerState = typeof PlayerState[keyof typeof PlayerState];
 
 export default function ExploreKandy() {
-  const playerRef = useRef<YT.Player | null>(null);
+  const playerRef = useRef<Player | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useVideoScrollControl(playerRef, true);
 
   useEffect(() => {
     const loadYouTubeAPI = () =>
@@ -84,7 +81,7 @@ export default function ExploreKandy() {
             iv_load_policy: 3,
             fs: 0,
             loop: 1,
-            playlist: "p9-FEqUtLF4",
+            playlist: "p9-FEqUtLF4", // needed for loop to work
           },
           events: {
             onReady: (event) => {

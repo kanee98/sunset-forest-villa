@@ -5,7 +5,7 @@ type VideoLike =
   | {
       playVideo: () => void;
       pauseVideo: () => void;
-      getIframe?: () => HTMLElement;  // added getIframe method optional
+      getIframe?: () => HTMLElement; 
     }
   | null;
 
