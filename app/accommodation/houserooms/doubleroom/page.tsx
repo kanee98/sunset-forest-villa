@@ -85,7 +85,7 @@ export default function SingleRoom() {
               Nestled in a quiet corner with views of the forest canopy, this room offers a cozy single bed and shares a bathroom with Room 3. Ideal for solo travelers or friends traveling together.
             </p>
             <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
-              <li>Single bed with soft linens</li>
+              <li>3x Single bed with soft linens</li>
               <li>Shared bathroom with Forest Hideaway Room</li>
               <li>Complimentary high-speed Wi-Fi</li>
               <li>Access to shared kitchen</li>

@@ -85,7 +85,6 @@ const packages = [
       "1 Night Stay",
       "Candlelight Dinner",
       "Complimentary Breakfast",
-      "Nature Walk",
     ],
   },
   {
@@ -93,7 +92,7 @@ const packages = [
     image: "/packages/family.jpg",
     description:
       "Fun for all ages! This package includes a cozy villa stay, games for the kids, and excursions for the entire family.",
-    features: ["2 Night Stay", "Family Room", "Kids Play Area", "Day Excursion"],
+    features: ["2 Night Stay", "Family Room", "Breakfast Included",],
   },
   {
     title: "Day Out Retreat",
@@ -103,7 +102,6 @@ const packages = [
     features: [
       "Villa Access (9AM - 6PM)",
       "Lunch & Evening Tea",
-      "Forest View Deck",
       "Optional BBQ",
     ],
   },
@@ -115,7 +113,6 @@ const packages = [
     features: [
       "Guided Yoga Sessions",
       "Organic Meals",
-      "Nature Trails",
       "1 Night Stay",
     ],
   },
@@ -131,11 +128,11 @@ const packages = [
       "Tea & Snacks",
     ],
   },
-  {
-    title: "Corporate Day Package",
-    image: "/packages/corporate.jpeg",
-    description:
-      "Ideal for team-building or business meetings in a peaceful natural setting.",
-    features: ["Conference Setup", "Lunch & Tea", "Team Activities", "Forest Walk"],
-  },
+  // {
+  //   title: "Corporate Day Package",
+  //   image: "/packages/corporate.jpeg",
+  //   description:
+  //     "Ideal for team-building or business meetings in a peaceful natural setting.",
+  //   features: ["Conference Setup", "Lunch & Tea", "Team Activities", "Forest Walk"],
+  // },
 ];

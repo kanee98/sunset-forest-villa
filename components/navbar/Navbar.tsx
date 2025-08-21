@@ -40,8 +40,8 @@ export default function Navbar() {
       label: "Villa Celestia",
       href: "/accommodation/villa1rooms",
       children: [
-        { label: "Double Room - Sunset Vista Deluxe", href: "/accommodation/villa1rooms/doubleroom" },
-        { label: "Triple Room - Horizon Retreat", href: "/accommodation/villa1rooms/tripleroom" },
+        { label: "Triple Room - Sunset Vista Deluxe", href: "/accommodation/villa1rooms/doubleroom" },
+        { label: "Family Room - Horizon Retreat", href: "/accommodation/villa1rooms/tripleroom" },
         { label: "Family Room - Starlight Deluxe", href: "/accommodation/villa1rooms/familyroom" },
       ],
     },
@@ -58,9 +58,9 @@ export default function Navbar() {
       label: "The Canopy House",
       href: "/accommodation/houserooms",
       children: [
-        { label: "Double Room - Forest Hideaway Room", href: "/accommodation/houserooms/familyroom" },
+        { label: "Triple Room - Forest Hideaway Room", href: "/accommodation/houserooms/familyroom" },
         { label: "Triple Room - Garden View Room", href: "/accommodation/houserooms/tripleroom" },     
-        { label: "Family Room - Forest Corner Room", href: "/accommodation/houserooms/doubleroom" },
+        { label: "Triple Room - Forest Corner Room", href: "/accommodation/houserooms/doubleroom" },
       ],
     },
   ];

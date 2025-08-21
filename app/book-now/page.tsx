@@ -186,15 +186,15 @@ export default function BookNowPage() {
               onChange={(e) => setFormData({ ...formData, roomType: e.target.value })}
             >
               <option value="">Select Room Option</option>
-              <option value="Double Room - Sunset Vista Deluxe - Villa Celestia">Double Room - Sunset Vista Deluxe - Villa Celestia</option>
-              <option value="Triple Room - Horizon Retreat - Villa Celestia">Triple Room - Horizon Retreat - Villa Celestia</option>
+              <option value="Triple Room - Sunset Vista Deluxe - Villa Celestia">Triple Room - Sunset Vista Deluxe - Villa Celestia</option>
+              <option value="Family Room - Horizon Retreat - Villa Celestia">Family Room - Horizon Retreat - Villa Celestia</option>
               <option value="Family Room - Starlight Deluxe - Villa Celestia">Family Room - Starlight Deluxe - Villa Celestia</option>
               <option value="Double Room - Fern Grove Retreat - Villa Elanora">Double Room - Fern Grove Retreat - Villa Elanora</option>
               <option value="Triple Room - Canopy View Deluxe - Villa Elanora">Triple Room - Canopy View Deluxe - Villa Elanora</option>
               <option value="Family Room - Woodland Deluxe - Villa Elanora">Family Room - Woodland Deluxe - Villa Elanora</option>
-              <option value="Double Room - Forest Hideaway Room - The Canopy House">Double Room - Forest Hideaway Room - The Canopy House</option>
+              <option value="Triple Room - Forest Hideaway Room - The Canopy House">Triple Room - Forest Hideaway Room - The Canopy House</option>
               <option value="Triple Room - Garden View Room - The Canopy House">Triple Room - Garden View Room - The Canopy House</option>
-              <option value="Family Room - Forest Corner Room - The Canopy House">Family Room - Forest Corner Room - The Canopy House</option>
+              <option value="Triple Room - Forest Corner Room - The Canopy House">Triple Room - Forest Corner Room - The Canopy House</option>
               <option value="Entire Villa Celestia">Entire Villa Celestia</option>
               <option value="Entire Villa Elanora">Entire Villa Elanora</option>
             </select>

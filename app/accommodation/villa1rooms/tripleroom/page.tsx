@@ -90,8 +90,9 @@ export default function SingleRoom() {
               Horizon Retreat is designed for those who crave comfort wrapped in nature. Soft lighting, forest-edge views, and minimalist luxury come together to create a deeply relaxing space, equipped with everything you need for a serene stay.
             </p>
             <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
-              <li>Double bed with ultra-soft bedding</li>
+              <li>2x Double beds with ultra-soft bedding</li>
               <li>Large windows with garden views</li>
+              <li>Large bathroom with bathtub</li>
               <li>Complimentary high-speed Wi-Fi</li>
               <li>Air conditioning and ceiling fan</li>
               <li>En-suite bathroom with hot water</li>

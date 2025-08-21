@@ -21,7 +21,7 @@ const rooms = [
   },
   {
     title: "Skyline Deluxe",
-    price: "Rs. 5,000",
+    price: "Rs. 6,500",
     img: "/rooms/V1R2/1.webp",
     description: "Unwind under a starry Kandyan sky.",
   },

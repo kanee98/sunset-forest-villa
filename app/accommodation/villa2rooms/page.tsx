@@ -83,6 +83,15 @@ export default function SingleRoom() {
             <p className="text-lg leading-relaxed">
               A sanctuary of calm and rustic elegance, Villa Elanora brings together earthy design, forest views, and warm hospitality. Each of its three unique rooms embraces natural textures and comfort, offering guests a memorable stay surrounded by tranquility.
             </p>
+            <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
+              <li>Can accomodate 9 pax</li>
+              <li>2x Family Rooms with shared bathroom ideal for families with kids</li>
+              <li>Private roof top access</li>
+              <li>Balconies facing the forest</li>
+              <li>BBQ machine on request</li>
+              <li>TV lounge area for socializing activities</li>
+              <li>Access to the kitchen</li>
+            </ul>
             <Link href="/book-now">
               <button className="mt-6 bg-[#B8860B] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#a87708] transition">
                 Book Now

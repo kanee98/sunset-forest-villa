@@ -91,11 +91,12 @@ export default function SingleRoom() {
               Guests can enjoy access to a fully equipped shared kitchen and experience the peaceful rhythm of forest life.
             </p>
             <ul className="list-disc list-inside space-y-2 text-[#F7E9D7]">
-              <li>3 comfortable rooms with private/shared bathrooms</li>
+              <li>Can accomodate 10 pax</li>
+              <li>4 bed room non-A/C house with private/shared bathrooms</li>
               <li>Complimentary high-speed Wi-Fi in all areas</li>
-              <li>Hot water showers in all rooms</li>
+              <li>Hot water showers in 3 rooms</li>
               <li>Access to fully equipped shared kitchen</li>
-              <li>Comfortable bedding and essential amenities</li>
+              <li>Bedding and essential amenities</li>
               <li>Ideal for families, small groups, or solo travelers</li>
             </ul>
             <Link href="/book-now">
