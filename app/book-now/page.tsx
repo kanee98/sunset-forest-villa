@@ -65,7 +65,10 @@ export default function BookNowPage() {
   return (
     <main className="min-h-screen bg-[#F5F3EF] text-[#4B2E1D]">
       {/* Hero */}
-      <section className="relative h-[85vh] bg-fixed bg-center bg-cover flex items-center justify-center" style={{ backgroundImage: "url('/bg.jpg')" }}>
+      <section
+        className="relative h-[85vh] bg-fixed bg-center bg-cover flex items-end justify-center pb-12 sm:pb-16 md:pb-20"
+        style={{ backgroundImage: "url('/bg.jpg')" }}
+      >
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
         <motion.div
           className="relative z-10 text-center text-white px-4"

@@ -19,7 +19,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-36 text-white overflow-hidden bg-black">
+    <section className="relative w-full h-screen flex items-end justify-between px-6 sm:px-10 md:px-20 lg:px-28 xl:px-36 text-white overflow-hidden bg-black pb-12 sm:pb-16 md:pb-20">
 
       {/* Fading Backgrounds */}
       <div className="absolute inset-0 z-0">

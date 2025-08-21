@@ -20,7 +20,7 @@ export default function SingleRoom() {
     <> 
       {/* Hero Banner */}
       <section
-        className="relative h-[60vh] md:h-[70vh] flex items-center justify-center bg-cover bg-center"
+        className="relative h-[60vh] md:h-[70vh] flex items-end justify-center bg-cover bg-center pb-12 md:pb-16"
         style={{ backgroundImage: `url(${selectedImage})` }}
       >
         <div className="absolute inset-0 bg-black/50" />

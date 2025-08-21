@@ -66,10 +66,8 @@ export default function TravelsAndTours() {
     <>
       {/* Hero Section */}
       <section
-        className="relative h-[85vh] bg-fixed bg-center bg-cover flex items-center justify-center"
-        style={{
-          backgroundImage: "url('/bg.jpg')",
-        }}
+        className="relative h-[85vh] bg-fixed bg-center bg-cover flex items-end justify-center pb-12 sm:pb-16 md:pb-20"
+        style={{ backgroundImage: "url('/bg.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
         <motion.div
