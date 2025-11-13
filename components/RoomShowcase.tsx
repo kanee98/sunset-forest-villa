@@ -72,8 +72,8 @@ export default function RoomShowcase() {
                 <h3 className="text-xl font-semibold mb-1">{room.title}</h3>
                 <p className="text-sm text-gray-300 mb-3">{room.description}</p>
                 <div className="text-right">
-                  <span className="text-lg font-bold">{room.price}</span>
-                  <span className="text-sm text-gray-400 ml-1">/ night</span>
+                  {/* <span className="text-lg font-bold">{room.price}</span> */}
+                  {/* <span className="text-sm text-gray-400 ml-1">/ night</span> */}
                 </div>
               </div>
             </div>
