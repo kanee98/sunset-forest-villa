@@ -30,7 +30,7 @@ jobs:
       - name: Prepare standalone artifact
         run: |
           mkdir -p standalone-artifact/.next
-          cp -r .next/standalone/* standalone-artifact/
+          cp -r .next/standalone/. standalone-artifact/
           cp -r .next/static standalone-artifact/.next/static
           cp -r public standalone-artifact/public
 
