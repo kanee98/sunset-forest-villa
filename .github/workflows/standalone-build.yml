@@ -40,3 +40,4 @@ jobs:
           name: nextjs-standalone
           path: standalone-artifact
           if-no-files-found: error
+          include-hidden-files: true
